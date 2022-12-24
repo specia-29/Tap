@@ -1,5 +1,33 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+    get 'users/update'
+  end
+  namespace :public do
+    get 'users/show'
+    get 'users/edit'
+    get 'users/update'
+    get 'users/followed'
+    get 'users/follower'
+    get 'users/stat_update'
+  end
+  namespace :public do
+    get 'searches/user_search'
+    get 'searches/article_search'
+  end
+  namespace :public do
+    get 'articles/top'
+    get 'articles/new'
+    get 'articles/create'
+    get 'articles/show'
+    get 'articles/edit'
+    get 'articles/update'
+    get 'articles/destroy'
+    get 'articles/like'
+  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
