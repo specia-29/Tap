@@ -1,0 +1,86 @@
+<div class="container">
+  <h2 class="mb-5 mt-3">新規登録</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
+
+  <div class="row">
+    <label class="col-lg-3">プロフィール画像</label>
+    <div class="col-lg-3">
+      <%#= f.collection? %>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-lg-3">名前</label>
+    <div class="col-lg-3">
+      <%= f.text_field :last_name,autoforcus: true, autocomplete: "last_name",  placeholder: "山田" %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :first_name,autoforcus: true, autocomplete: "first_name",  placeholder: "花子" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-lg-3">フリガナ</label>
+    <div class="col-lg-3">
+      <%= f.text_field :last_name_kana,autoforcus: true, autocomplete: "last_name_kana",  placeholder: "ヤマダ" %>
+    </div>
+    <div class="col-lg-3">
+      <%= f.text_field :first_name_kana,autoforcus: true, autocomplete: "first_name_kana",  placeholder: "ハナコ" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-lg-3">メールアドレス</label>
+    <div class="col-lg-3">
+      <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-lg-3">ユーザー名</label>
+    <div class="col-lg-3">
+      <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-lg-3">生年月日</label>
+    <div class="col-lg-3">
+      <%#= f.select? %>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-lg-3">電話番号(ハイフンなし)</label>
+    <div class="col-lg-3">
+      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",  placeholder: "09011112222" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-lg-3">パスワード(6文字以上)</label>
+    <div class="col-lg-3">
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <label class="col-lg-3">パスワード(確認用)</label>
+    <div class="col-lg-3">
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録", class: 'btn btn-danger' %>
+  </div>
+<% end %>
+
+  <h4 class="mb-3 pl-2">会員登録がお済みでない方</h4>
+    <div class="row">
+      <%= link_to "ログイン", new_user_registration_path, class: 'btn btn-info' %>
+    </div>
+
+</div>
