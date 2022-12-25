@@ -17,29 +17,39 @@
         </button>
         <span class="navbar-toggler-icon"></span>
           <nav class="navbar navbar-expand-sm navbar-dark">
-            <%= link_to root_path do %>
-            <%= image_tag "logo.png", size: '300x100' %>
+            <%= link_to public_articles_top_path do %>
+              <%= image_tag "logo.png", size: '300x100' %>
             <% end %>
             <ul class="nav navbar-nav">
-              <% if customer_signed_in? %>
-              <li class="nav-item ml-5">ようこそ、<%= current_customer.last_name %>さん！</li>
-              <li class="nav-item"><%= link_to "マイページ", customers_mypage_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "カート", cart_item_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
+              <% if user_signed_in? %>
+              <!--検索欄-->
+              <div class="input-group">
+                <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力"></input>
+                <span class="input-group-btn input-group-append">
+                  <submit type="submit" id="btn-search" class="btn btn-primary"><i class="fas fa-search"></i> 検索</submit>
+                </span>
+              </div>
+              <%= link_to public_articles_like_path do %><i class="fas fa-heart"></i><% end %>
+              <%= link_to new_public_article_path do %><i class="fas fa-camera"></i><% end %>
+              <%= link_to public_articles_top_path do %><i class="fas fa-home"></i><% end %>
+              <%= link_to public_user_path do %><i class="fas fa-user"></i><% end %>
+              <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
 
               <% elsif admin_signed_in? %>
-              <li class="nav-item"><%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "注文履歴一覧", admin_root_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-dark border ml-5' %></li>
+              <!--検索欄-->
+              <div class="input-group">
+                <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="キーワードを入力"></input>
+                <span class="input-group-btn input-group-append">
+                  <submit type="submit" id="btn-search" class="btn btn-primary"><i class="fas fa-search"></i> 検索</submit>
+                </span>
+              </div>
+              <li class="nav-item"><%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark border ml-5' %></li>
               <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
 
               <% else %>
-              <li class="nav-item"><%= link_to "About", about_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "商品一覧", items_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark border ml-5' %></li>
+              <li class="nav-item"><%= link_to "ゲストログイン", public_articles_top_path, class: 'nav-link text-dark border ml-5' %></li>
               <% end %>
             </ul>
           </nav>
