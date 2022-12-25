@@ -1,12 +1,12 @@
 <div class="container">
 
   <div class="row">
-    <h2 class="col-lg-2 mb-3 mt-5 bg-warning text-dark text-center">新規登録</h2>
+    <h2 class="col-lg-2 mb-5 mt-5 bg-warning text-dark text-center">新規登録</h2>
   </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-<div class="mx-auto">
+<div class="justify-content-center">
   <div class="row mb-2">
     <label class="col-lg-3">プロフィール画像</label>
     <div class="col-lg-3">
@@ -69,23 +69,26 @@
     </div>
   </div>
 
-  <div class="row mb-4">
+  <div class="row mb-5">
     <label class="col-lg-3">パスワード(確認用)</label>
     <div class="col-lg-3">
     <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
     <div class="actions">
-      <%= f.submit "登録", class: 'btn btn-danger' %>
+      <%= f.submit "登録", class: 'btn btn-warning font-weight-bold border-dark pl-5 pr-5' %>
     </div>
   </div>
 <% end %>
 
   <div class="col-lg-9 border-bottom border-dark"></div>
 
-    <div class="row">
-      <p class="btn">ログインはこちらから</p>
-      ➡
-      <%= link_to "ログイン", new_user_registration_path, class: 'btn btn-info' %>
+    <div class="row align-items-center mt-5">
+      <div class="col-lg-2"></div>
+      <h4 class="font-weight-bold mr-1">ログイン</h4>はこちらから
+      <i class="fas fa-caret-right ml-3 mr-1"></i>
+      <i class="fas fa-caret-right mr-1"></i>
+      <i class="fas fa-caret-right mr-3"></i>
+      <%= link_to "ログイン", new_user_session_path, class: 'btn btn-info btn-lg text-dark font-weight-bold border-dark' %>
     </div>
   </div>
 </div>
