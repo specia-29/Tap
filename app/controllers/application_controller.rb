@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    if resource_or_scope == :user
+    if resource_params == :user
         public_articles_top_path
-    elsif resource_or_scope == :admin
+    elsif resource_params == :admin
         admin_users_path
     else
         new_user_session_path
