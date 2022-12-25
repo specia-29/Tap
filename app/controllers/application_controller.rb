@@ -4,16 +4,23 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    admin_session_path
+    if resource_or_scope == :user
+        public_articles_top_path
+    elsif resource_or_scope == :admin
+        admin_users_path
+    else
+        new_user_session_path
+    end
+
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    if resource_or_scope == :customer
-        root_path
+    if resource_or_scope == :user
+        new_user_session_path
     elsif resource_or_scope == :admin
         new_admin_session_path
     else
-        root_path
+        new_user_session_path
     end
   end
 
