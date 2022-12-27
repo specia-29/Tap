@@ -3,16 +3,6 @@ class ApplicationController < ActionController::Base
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def after_sign_in_path_for(resource)
-    if resource_params == :user
-        public_articles_top_path
-    elsif resource_params == :admin
-        admin_users_path
-    else
-        new_user_session_path
-    end
-
-  end
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :user

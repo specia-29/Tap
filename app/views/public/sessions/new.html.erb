@@ -1,26 +1,41 @@
-<h2>Log in</h2>
+<div class="container">
+
+  <div class="row">
+    <h2 class="col-lg-2 mb-5 mt-5 bg-info text-dark text-center">ログイン</h2>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= render "public/shared/error_messages", resource: resource %>
+<div class="justify-content-center">
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <div class="row mt-5 mb-5">
+    <label class="col-lg-3">メールアドレス</label>
+    <div class="col-lg-3">
+      <%= f.text_field :email, autofocus: true, autocomplete: "email", size: 40,  placeholder: "y.hanako@example.com" %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
+
+  <div class="row mb-5">
+    <label class="col-lg-3">パスワード(6文字以上)</label>
+    <div class="col-lg-3">
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+  </div>
+
+    <div class="actions">
+      <%= f.submit "ログイン", class: 'btn btn-primary font-weight-bold text-dark border-dark pl-5 pr-5' %>
+    </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+  <div class="col-lg-9 border-bottom border-dark mt-5 mb-5"></div>
+
+    <div class="row align-items-center">
+      <div class="col-lg-2"></div>
+      <h4 class="font-weight-bold mr-1">新規登録</h4>はこちらから
+      <i class="fas fa-caret-right ml-5 mr-1"></i>
+      <i class="fas fa-caret-right mr-1"></i>
+      <i class="fas fa-caret-right mr-5"></i>
+      <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-warning btn-lg text-dark font-weight-bold border-dark' %>
+    </div>
+  </div>
+</div>
