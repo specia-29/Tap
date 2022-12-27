@@ -1,2 +1,24 @@
-<h1>Public::Articles#edit</h1>
-<p>Find me in app/views/public/articles/edit.html.erb</p>
+<div class="container">
+
+<%= form_with model: @article, url: public_article_path do |f| %>
+  <div class="row mb-5 mt-5">
+    <label class="col-lg-2">画像</label>
+    <div class="col-lg-3">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <label class="col-lg-2">キャプション</label>
+    <div class="col-lg-3">
+      <%= f.text_area :body, autofocus: true, autocomplete: "email", cols: 50, rows: 10 %>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-lg-2 ml-3"></div>
+      <%= f.submit "変更を保存", class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 mr-5' %>
+      <%= link_to "投稿を削除", public_articles_top_path(@user), method: :delete, class: 'btn btn-danger border-dark pl-5 pr-5', "data-confirm" => "本当に削除しますか？"  %>
+    </div>
+</div>
+<% end %>
