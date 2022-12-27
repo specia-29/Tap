@@ -1,2 +1,31 @@
-<h1>Public::Articles#new</h1>
-<p>Find me in app/views/public/articles/new.html.erb</p>
+<div class="container">
+
+<%= form_with model: @article, url: public_articles_path do |f| %>
+  <div class="row mb-5 mt-5">
+    <label class="col-lg-2">画像</label>
+    <div class="col-lg-3">
+      <%= f.file_field :image, accept: "image/*" %>
+    </div>
+  </div>
+
+  <div class="row mb-5">
+    <label class="col-lg-2">キャプション</label>
+    <div class="col-lg-3">
+      <%= f.text_area :body, autofocus: true, autocomplete: "email", cols: 50, rows: 10,
+placeholder:
+"2022.8.19
+沖縄県宮古島を観光しました📸
+
+#沖縄
+#宮古島
+#TapMe
+#TakeAPicture" %>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-lg-2 ml-3"></div>
+      <%= f.submit "投稿", class: 'btn btn-primary font-weight-bold border-dark pl-5 pr-5' %>
+    </div>
+</div>
+<% end %>
