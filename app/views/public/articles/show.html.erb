@@ -2,15 +2,10 @@
   <div class="row">
     <%= form_with model: @article, url: public_article_path do |f| %>
       <div class="col-lg-9">
-        <% if @article.image.attached? %>
+        <% if @article.post_image.attached? %>
           <%= image_tag @article.post_image %>
         <% end %>
-      </div>
-
-      <div class="row mb-5">
-        <div class="col-lg-3">
-          <%= @article.body %>
-        </div>
+        <%= @article.body %>
       </div>
 
         <div class="row">
