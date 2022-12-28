@@ -8,9 +8,14 @@ class Public::ArticlesController < ApplicationController
   end
 
   def create
+    @article = Article.new(article_params)
+    @article.user_id = current_user.id
+    @article.save
+    redirect_to public_articles_top_path
   end
 
   def show
+    # @article = Article.find(params[:id])
   end
 
   def edit
@@ -26,8 +31,8 @@ class Public::ArticlesController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:article).permit(:body, :image, :user_id)
+  def article_params
+    params.require(:article).permit(:body, :post_image, :user_id)
   end
 
 end

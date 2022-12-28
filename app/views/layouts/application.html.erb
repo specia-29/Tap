@@ -11,7 +11,7 @@
   </head>
 
     <body class="d-flex flex-column vh-100">
-    <header class="shadow-sm mb-3">
+    <header class="shadow-sm">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         </button>
@@ -50,7 +50,6 @@
               <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark border ml-5' %></li>
               <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark border ml-5' %></li>
               <li class="nav-item"><%= link_to 'ゲストログイン', public_articles_top_path, method: :post, class: 'nav-link text-dark border ml-5' %></li>
-              <!--<li class="nav-item"><%#= link_to "ゲストログイン", public_articles_top_path, class: 'nav-link text-dark border ml-5' %></li>-->
               <% end %>
             </ul>
           </nav>
