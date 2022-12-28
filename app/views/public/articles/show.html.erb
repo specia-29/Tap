@@ -2,18 +2,14 @@
   <div class="row">
     <%= form_with model: @article, url: public_article_path do |f| %>
       <div class="col-lg-9">
-        <% if f.image.attached? %>
-          <%= image_tag f.image, size: "200x100" %><br>
-        <% else %>
-          <%= image_tag 'no_image', size: "150x75" %><br>
+        <% if @article.image.attached? %>
+          <%= image_tag @article.post_image %>
         <% end %>
-        </div>
       </div>
 
       <div class="row mb-5">
-        <label class="col-lg-2">キャプション</label>
         <div class="col-lg-3">
-          <%= f.text_area :body, autofocus: true, autocomplete: "email", cols: 50, rows: 10 %>
+          <%= @article.body %>
         </div>
       </div>
 
