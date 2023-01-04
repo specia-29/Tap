@@ -1,2 +1,21 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container border-right border-left">
+  <div class="row border-bottom">
+      <div class="col-lg-3 p-4">
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image, class: "rounded-circle", size: "180x180" %>
+        <% else %>
+          <%= image_tag 'no_image', class: "rounded-circle", size: "180x180" %>
+        <% end %>
+      </div>
+
+      <div class="col-lg-6 p-4">
+        <%= @user.user_name %><br>
+        <%= @user.introduction %><br>
+        <p>フォロー</p>
+        <p>フォロワー</p>
+      </div>
+  </div>
+  <%= link_to "プロフィール編集", edit_public_user_path(@user), class: "btn btn-success" %>
+  <%= form_with model: @user, url: public_article_path do |f| %>
+  <% end %>
+</div>

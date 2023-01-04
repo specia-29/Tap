@@ -4,6 +4,7 @@
       <table class="table">
         <tbody>
           <% @users.each do |user| %>
+          <%#= link_to admin_user_path(@user) do %>
             <tr>
               <td>
                 <%#= link_to admin_user_path(@user) do %>
@@ -19,6 +20,7 @@
               <td>フォロー</td>
               <td>フォロワー</td>
             </tr>
+            <%# end %>
           <% end %>
         </tbody>
       </table>

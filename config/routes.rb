@@ -11,8 +11,7 @@ Rails.application.routes.draw do
 }
 
   namespace :admin do
-    get 'users', to: 'users#index'
-    resource :users, only: [:edit, :index, :show, :update]
+    resources :users, only: [:edit, :index, :show, :update]
   end
 
   # 顧客用
