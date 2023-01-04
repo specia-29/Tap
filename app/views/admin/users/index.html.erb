@@ -1,2 +1,27 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <table class="table">
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%#= link_to admin_user_path(@user) do %>
+                  <% if user.profile_image.attached? %>
+                    <%= image_tag user.profile_image, class: "rounded-circle", size: "60x60" %>
+                  <% else %>
+                    <%= image_tag 'no_image', class: "rounded-circle", size: "60x60" %>
+                  <% end %>
+                <%# end %>
+              </td>
+              <td><%= user.user_name %></td>
+              <td></td>
+              <td>フォロー</td>
+              <td>フォロワー</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
