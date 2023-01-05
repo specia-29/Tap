@@ -15,7 +15,7 @@
         <p>フォロワー</p>
       </div>
   </div>
-  <%= link_to "プロフィール編集", edit_public_user_path(@user), class: "btn btn-success" %>
+  <%= link_to "削除する", edit_public_user_path(@user), class: "btn btn-danger" %>
   <%= form_with model: @user, url: public_article_path do |f| %>
   <% end %>
 </div>
