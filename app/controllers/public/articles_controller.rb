@@ -11,7 +11,7 @@ class Public::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.save
-    redirect_to public_articles_top_path
+    redirect_to public_root_path
   end
 
   def show
@@ -25,9 +25,6 @@ class Public::ArticlesController < ApplicationController
   end
 
   def destroy
-  end
-
-  def like
   end
 
   private

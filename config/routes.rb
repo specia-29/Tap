@@ -27,10 +27,16 @@ Rails.application.routes.draw do
     get 'users/followed'
     get 'users/follower'
     get 'users/stat_update'
-    get 'articles/like'
-    resources :articles, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :articles, only: [:new, :create, :show, :edit, :update, :destroy] do
+      resource :likes, only: [:create, :destroy]
+      resources :comments, only: [:create, :destroy]
+    end
     get 'searches/user_search'
     get 'searches/article_search'
+
+    # get 'articles/like'
+    # resources :articles, only: [:new, :create, :show, :edit, :update, :destroy]
+
   end
 
 end
