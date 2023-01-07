@@ -1,6 +1,7 @@
 class Public::ArticlesController < ApplicationController
-  def top
-    @user = User.find(params[:id])
+  def index
+    @article = Article.find(params[:id])
+    @article_comment = ArticleComment.new
   end
 
   def new
@@ -15,7 +16,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+
   end
 
   def edit

@@ -1,6 +1,16 @@
 
-<h1>Public::Articles#top</h1>
-<p>Find me in app/views/public/articles/top.html.erb</p>
-
-
 <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+
+  <% if @article.liked_by?(current_user) %>
+    <p>
+      <%= link_to public_root_path(@article), method: :delete do %>
+        ♥<%= @article.likes.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to public_root_path(@article), method: :post do %>
+        ♡<%= @article.likes.count %> いいね
+      <% end %>
+    </p>
+  <% end %>

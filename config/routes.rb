@@ -22,12 +22,14 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
-    root :to => 'articles#top'
+    # root :to => 'articles#top'
     resources :users
     get 'users/followed'
     get 'users/follower'
     get 'users/stat_update'
+    get 'articles/:id' => 'articles#index', as: 'article'
     resources :articles, only: [:new, :create, :show, :edit, :update, :destroy] do
+
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
