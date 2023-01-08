@@ -1,4 +1,4 @@
-class article < ApplicationRecord
+class Tag < ApplicationRecord
 
 # 検索方法分岐
   def self.looks(search, word)

@@ -6,12 +6,13 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
+          <td><%= user.profile_image %></td>
+          <td><%= user.user_name %></td>
         </tr>
       <% end %>
     </tbody>
   <% else %>
-    <!--検索対象モデルがUserではない時(= 検索対象モデルがBookの時) -->
+    <!--検索対象モデルがUserではない時(= 検索対象モデルがArticleの時) -->
     <tbody>
       <% @articles.each do |article| %>
         <tr>

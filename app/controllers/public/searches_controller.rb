@@ -9,8 +9,10 @@ class Public::SearchesController < ApplicationController
 
     if @range == "User"
       @users = User.looks(params[:search], params[:word])
+      render "public/searches/search_result"
     else
       @tags = Tag.looks(params[:search], params[:word])
+      render "public/searches/search_result"
     end
   end
 

@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     get "search" => "searches#search"
+    get "search/result" => "searches#search"
 
     # get 'articles/like'
     # resources :articles, only: [:new, :create, :show, :edit, :update, :destroy]
