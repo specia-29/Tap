@@ -6,7 +6,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.profile_image %></td>
+          <td><%= image_tag user.profile_image %></td>
           <td><%= user.user_name %></td>
         </tr>
       <% end %>
