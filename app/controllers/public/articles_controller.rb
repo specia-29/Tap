@@ -1,11 +1,12 @@
 class Public::ArticlesController < ApplicationController
-  def index
-    @article = Article.find(params[:id])
-    @article_comment = ArticleComment.new
-  end
 
   def new
     @article = Article.new
+  end
+
+  def index
+    @article = Article.find(params[:id])
+    @article_comment = ArticleComment.new
   end
 
   def create
@@ -16,7 +17,6 @@ class Public::ArticlesController < ApplicationController
   end
 
   def show
-
   end
 
   def edit

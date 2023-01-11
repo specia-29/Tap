@@ -5,10 +5,9 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  # has_many :articles, dependent: :destroy
-  # has_many :comments, dependent: :destroy
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # has_many :relation_ships, dependent: :destroy
-  # has_many :articles, dependent: :destroy
   # has_many :likes, dependent: :destroy
 
   def self.guest
