@@ -22,6 +22,9 @@ class Public::ArticlesController < ApplicationController
   def edit
   end
 
+  def like
+  end
+
   def update
   end
 
