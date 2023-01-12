@@ -5,7 +5,8 @@ class Public::ArticlesController < ApplicationController
   end
 
   def index
-    @article = Article.find(params[:id])
+    # @article = Article.find(params[:id])
+    @articles = Article.all
     @article_comment = ArticleComment.new
   end
 
@@ -13,13 +14,15 @@ class Public::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.save
-    redirect_to public_root_path
+    redirect_to public_article_index_path(@article.id)
   end
 
   def show
+    @article = Article.find(params[:id])
   end
 
   def edit
+    @article = Article.find(params[:id])
   end
 
   def like

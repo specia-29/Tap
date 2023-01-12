@@ -27,12 +27,13 @@ Rails.application.routes.draw do
     get 'users/followed'
     get 'users/follower'
     get 'users/stat_update'
-    get 'articles/:id' => 'articles#index', as: 'article'
-    get 'articles/likes' => 'articles#like', as: 'article_like'
+
     resources :articles, only: [:new, :create, :show, :edit, :update, :destroy] do
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+    get 'articles/:id' => 'articles#index', as: 'article_index'
+    get 'articles/likes' => 'articles#like', as: 'article_like'
     get "search" => "searches#search"
     get "search/result" => "searches#search"
 
