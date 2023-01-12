@@ -3,7 +3,7 @@
     <%= form_with model: @article, url: public_article_path do |f| %>
       <div class="col-lg-9">
         <% if @article.post_image.attached? %>
-          <%= image_tag @article.post_image %>
+          <%= image_tag @article.post_image, size: '600x400' %>
         <% end %>
         <%= @article.body %>
       </div>

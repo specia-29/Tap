@@ -1,14 +1,7 @@
 <div class="container">
 
 <%= form_with model: @article, url: public_article_path do |f| %>
-  <div class="row mb-5 mt-5">
-    <label class="col-lg-2">画像</label>
-    <div class="col-lg-3">
-      <%= f.file_field :post_image, accept: "image/*" %>
-    </div>
-  </div>
-
-  <div class="row mb-5">
+  <div class="row mt-5">
     <label class="col-lg-2">キャプション</label>
     <div class="col-lg-3">
       <%= f.text_area :body, autofocus: true, autocomplete: "email", cols: 50, rows: 10 %>
