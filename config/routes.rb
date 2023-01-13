@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     get 'articles' => 'articles#index', as: 'article_index'
-    get 'articles/likes' => 'articles#like', as: 'article_like'
+    get 'articles/:id/likes' => 'articles#like', as: 'article_like'
     get "search" => "searches#search"
     get "search/result" => "searches#search"
 
