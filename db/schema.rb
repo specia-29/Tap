@@ -73,13 +73,6 @@ ActiveRecord::Schema.define(version: 2023_01_13_011831) do
     t.integer "user_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "article_id"
-    t.integer "user_id"
-  end
-
   create_table "relation_ships", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

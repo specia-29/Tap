@@ -38,7 +38,7 @@ class Public::ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:body, :post_image, :user_id)
+    params.require(:article).permit(:body, :post_image, :user_id, :article_id)
   end
 
 end
