@@ -5,8 +5,11 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  has_many :articles, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_articles, through: :likes, source: :article
   has_many :comments, dependent: :destroy
+
+  # has_many :articles, dependent: :destroy
   # has_many :relation_ships, dependent: :destroy
   # has_many :likes, dependent: :destroy
 

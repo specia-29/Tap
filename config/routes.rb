@@ -22,23 +22,21 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
-    # root :to => 'articles#top'
+    # root :to => 'articles#index'
     resources :users
     get 'users/followed'
     get 'users/follower'
     get 'users/stat_update'
 
-    resources :articles, only: [:new, :create, :show, :edit, :update, :destroy] do
-      resource :likes, only: [:create, :destroy]
+    resources :articles do
+      post 'add' => 'likes#create'
+      delete '/add' => 'likes#destroy'
       resources :comments, only: [:create, :destroy]
     end
-    get 'articles' => 'articles#index', as: 'article_index'
-    get 'articles/:id/likes' => 'articles#like', as: 'article_like'
+
     get "search" => "searches#search"
     get "search/result" => "searches#search"
 
-    # get 'articles/like'
-    # resources :articles, only: [:new, :create, :show, :edit, :update, :destroy]
 
   end
 
