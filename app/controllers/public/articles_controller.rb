@@ -7,7 +7,7 @@ class Public::ArticlesController < ApplicationController
   def index
     # @article = Article.find(params[:id])
     @articles = Article.all
-    @article_comment = ArticleComment.new
+    # @article_comment = ArticleComment.new
   end
 
   def create

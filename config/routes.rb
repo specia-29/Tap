@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resource :likes, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    get 'articles/:id' => 'articles#index', as: 'article_index'
+    get 'articles' => 'articles#index', as: 'article_index'
     get 'articles/likes' => 'articles#like', as: 'article_like'
     get "search" => "searches#search"
     get "search/result" => "searches#search"
