@@ -29,9 +29,7 @@ Rails.application.routes.draw do
     get 'users/stat_update'
 
     resources :articles do
-      post 'add' => 'likes#create'
-      delete '/add' => 'likes#destroy'
-      resources :comments, only: [:create, :destroy]
+      resources :likes, only: [:create, :destroy]
     end
 
     get "search" => "searches#search"

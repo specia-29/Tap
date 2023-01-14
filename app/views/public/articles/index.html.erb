@@ -1,21 +1,3 @@
 
 <%#= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
 
-  <div id="like-btn-<%= @articles.id %>">
-     <%= render 'public/likes/like', post: article %>
-  </div>
-
-  <div>
-  <p>コメント件数：<%= @article.comments.count %></p>
-  <% @article.comments.each do |comment| %>
-    <p><%= image_tag comment.user.get_profile_image(80,80) %></p>
-    <%= comment.user.user_name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% end %>
-</div>
-<div>
-  <%= form_with model: [@article, @article_comment] do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>

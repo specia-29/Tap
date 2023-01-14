@@ -5,13 +5,15 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  has_many :articles, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :like_articles, through: :likes, source: :article
-  has_many :comments, dependent: :destroy
-
-  # has_many :articles, dependent: :destroy
+  has_many :liked_articles, through: :likes, source: :article
   # has_many :relation_ships, dependent: :destroy
   # has_many :likes, dependent: :destroy
+
+  def already_liked?(article)
+    self.likes.exists?(article_id: article.id)
+  end
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
