@@ -1,9 +1,0 @@
-<% if article.liked_by?(current_user) %>
-   <%= link_to(public_article_add_path(article), method: :delete, remote: true, id: :"like-button-#{article.id}") do %>
-       <i class="fa-lg fas fa-heart icon-btn liked"></i>
-   <% end %>
-<% else %>
-   <%= link_to(public_article_add_path(article), method: :post, remote: true, id: :"like-button-#{article.id}") do %>
-       <i class="fa-lg fas fa-heart icon-btn not-like"></i>
-   <% end %>
-<% end %>
