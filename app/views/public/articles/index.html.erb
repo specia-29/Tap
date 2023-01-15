@@ -1,5 +1,12 @@
-<% @articles.each do |article| %>
-  <%= article.user.user_name %>
-  <%= image_tag article.post_image, size: '600x400' %>
-  <%= article.body %>
-<% end %>
+<div class="container">
+  <div class="row">
+      <% @articles.each do |article| %>
+      <div class="col-lg-12 mt-3">
+        <%= image_tag article.user.profile_image, class: "rounded-circle", size: "50x50" %>
+        <%= article.user.user_name %><br>
+        <%= image_tag article.post_image, size: '900x600' %><br>
+        <%= article.body %><br>
+      </div>
+      <% end %>
+  </div>
+</div>
