@@ -23,7 +23,7 @@
   <% end %>
 
         <p>いいね件数: <%= @article.likes.count %></p>
-        <%= @article.body %>
+        <%= safe_join(@article.body.split("\n"),tag(:br))%>
       </div>
 
       <h2>いいねしたユーザー</h2>
