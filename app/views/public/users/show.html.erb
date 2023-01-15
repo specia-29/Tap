@@ -14,8 +14,10 @@
         <p>フォロー</p>
         <p>フォロワー</p>
       </div>
+      <div class="col-lg-3 p-4">
+        <%= link_to "プロフィール編集", edit_public_user_path(@user), class: "btn btn-success" %>
+      </div>
   </div>
-  <%= link_to "プロフィール編集", edit_public_user_path(@user), class: "btn btn-success" %>
   <%= form_with model: @user, url: public_article_path do |f| %>
   <% end %>
 </div>
