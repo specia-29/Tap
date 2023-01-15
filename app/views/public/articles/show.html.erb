@@ -11,7 +11,18 @@
         <% else %>
           <%= button_to 'いいね', public_article_likes_path(@article) %>
         <% end %>
-        <p>いいね件数: <%= @article.likes.count %></p><br>
+
+<% if current_user.already_liked?(@article) %>
+  <%= link_to public_article_like_path(@article), method: :post do %>
+    <i class="far fa-heart like-btn" ></i>
+  <% end %>
+<% else %>
+  <%= link_to public_article_like_path(@article), method: :delete do %>
+    <i class="fas fa-heart unlike-btn"></i>
+  <% end %>
+  <% end %>
+
+        <p>いいね件数: <%= @article.likes.count %></p>
         <%= @article.body %>
       </div>
 
@@ -19,6 +30,8 @@
       <% @article.liked_users.each do |user| %>
         <li><%= user.user_name %></li>
       <% end %>
+
+
 
     <!--  <div>-->
     <!--  <p>コメント件数：<%#= @article.comments.count %></p>-->

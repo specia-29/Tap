@@ -1,3 +1,5 @@
-
-<%#= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
-
+<% @articles.each do |article| %>
+  <%= article.user.user_name %>
+  <%= image_tag article.post_image, size: '600x400' %>
+  <%= article.body %>
+<% end %>
