@@ -11,7 +11,7 @@
     <div class="row">
       <div class="col-lg-2 ml-3"></div>
       <%= f.submit "変更を保存", class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 mr-5' %>
-      <%= link_to "投稿を削除", public_article_index_path, method: :delete, class: 'btn btn-danger border-dark pl-5 pr-5', "data-confirm" => "本当に削除しますか？"  %>
+      <%= link_to "投稿を削除", public_articles_path, method: :delete, class: 'btn btn-danger border-dark pl-5 pr-5', "data-confirm" => "本当に削除しますか？"  %>
     </div>
 </div>
 <% end %>

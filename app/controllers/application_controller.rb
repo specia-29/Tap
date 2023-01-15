@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # deviseコントローラーにストロングパラメータを追加する
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  protect_from_forgery
+
 
   def after_sign_out_path_for(resource_or_scope)
     if resource_or_scope == :user

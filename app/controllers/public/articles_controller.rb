@@ -33,6 +33,9 @@ class Public::ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
+    @article.update(article_params)
+    redirect_to public_article_path(@article.id)
   end
 
   def destroy
