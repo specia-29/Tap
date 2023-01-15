@@ -8,7 +8,7 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.order(created_at: :desc)
-    # @article = Article.find(params[:id])
+    # @article = Article.find(params[:article_id])
   end
 
   def create
