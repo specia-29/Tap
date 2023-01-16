@@ -23,10 +23,13 @@ Rails.application.routes.draw do
 
   namespace :public do
     # root :to => 'articles#index'
-    resources :users
-    get 'users/followed'
-    get 'users/follower'
-    get 'users/stat_update'
+    resources :users do
+      member do
+        get :following, :followers
+      end
+    end
+    resources :relationships, only: [:create, :destroy]
+    # get 'users/stat_update'
 
     resources :articles do
       resources :likes, only: [:create, :destroy]
