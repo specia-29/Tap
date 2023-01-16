@@ -8,6 +8,8 @@
         <tr>
           <td><%= image_tag user.profile_image %></td>
           <td><%= user.user_name %></td>
+          <td><%#= render 'public/users/follow_form' %></td>
+　　　    <td><%= render 'public/users/stats' %></td>
         </tr>
       <% end %>
     </tbody>

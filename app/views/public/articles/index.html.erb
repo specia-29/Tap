@@ -5,8 +5,8 @@
         <%#= link_to, public_article_path(@user) do %>
           <%= image_tag article.user.profile_image, class: "rounded-circle", size: "50x50" %>
           <%= article.user.user_name %>
-          <%= render 'follow_form' %>
-　　　    <%= render 'stats' %><br>
+          <%= render 'public/users/follow_form' %>
+　　　    <%= render 'public/users/stats' %><br>
 　　　    <%# end %>
           <%= image_tag article.post_image, size: '900x600', class: "mt-2 mb-2" %><br>
           <%= safe_join(article.body.split("\n"),tag(:br)) %><br>
