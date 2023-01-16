@@ -4,10 +4,9 @@
       <div class="col-lg-12 mt-3 border-bottom">
         <%#= link_to, public_article_path(@user) do %>
           <%= image_tag article.user.profile_image, class: "rounded-circle", size: "50x50" %>
-          <%= article.user.user_name %>
-          <%= render 'public/users/follow_form' %>
-　　　    <%= render 'public/users/stats' %><br>
-　　　    <%# end %>
+          <%= article.user.user_name %><br>
+          <%#= render 'public/users/follow' %>
+　　　   <%# end %>
           <%= image_tag article.post_image, size: '900x600', class: "mt-2 mb-2" %><br>
           <%= safe_join(article.body.split("\n"),tag(:br)) %><br>
       </div>

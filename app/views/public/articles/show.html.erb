@@ -2,6 +2,10 @@
   <div class="row">
     <%= form_with model: @article, url: public_article_path do |f| %>
       <div class="col-lg-9">
+        <div class="profile-link mt-2 mb-2">
+          <%= image_tag @article.user.profile_image, class: "rounded-circle", size: "50x50" %>
+          <%= @article.user.user_name %>
+        </div>
         <% if @article.post_image.attached? %>
           <%= image_tag @article.post_image, size: '600x400' %>
         <% end %>
