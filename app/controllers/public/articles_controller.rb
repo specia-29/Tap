@@ -1,6 +1,6 @@
 class Public::ArticlesController < ApplicationController
 
-  before_action :authenticate_user!, only: [:show, :create]
+  before_action :authenticate_user!, only: [:index, :show, :create]
 
   def new
     @article = Article.new
