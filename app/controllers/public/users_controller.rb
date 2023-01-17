@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    @articles = @user.articles.all
   end
 
   def edit
@@ -13,10 +14,16 @@ class Public::UsersController < ApplicationController
     redirect_to public_user_path(@user.id)
   end
 
-  def followed
+  def following
+      @user  = User.find(params[:id])
+      @users = @user.followings
+      render 'show_follow'
   end
 
-  def follower
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
   end
 
   def stat_update

@@ -15,9 +15,16 @@
         <p>フォロワー</p>
       </div>
       <div class="col-lg-3 p-4">
-        <%= link_to "プロフィール編集", edit_public_user_path(@user), class: "btn btn-success" %>
+        <% if @user == current_user %>
+          <%= link_to "プロフィール編集", edit_public_user_path(@user), class: "btn btn-success" %>
+        <% else %>
+          <div></div>
+        <% end %>
       </div>
   </div>
-  <%= form_with model: @user, url: public_article_path do |f| %>
+  <% @articles.each do |article| %>
+    <%= link_to public_article_path(article.id) do %>
+      <%= image_tag article.post_image, class: "m-3", size: "300x200" %>
+    <% end %>
   <% end %>
 </div>
