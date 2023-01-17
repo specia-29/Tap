@@ -3,8 +3,14 @@
     <%= form_with model: @article, url: public_article_path do |f| %>
       <div class="col-lg-9">
         <div class="profile-link mt-2 mb-2">
-          <%= image_tag @article.user.profile_image, class: "rounded-circle", size: "50x50" %>
-          <%= @article.user.user_name %>
+          <%= link_to public_user_path(@user), class: "text-dark" do %>
+            <% if @article.user.profile_image.attached? %>
+              <%= image_tag @article.user.profile_image, class: "rounded-circle", size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+            <% end %>
+            <%= @article.user.user_name %>
+          <% end %>
         </div>
         <% if @article.post_image.attached? %>
           <%= image_tag @article.post_image, size: '600x400' %>
@@ -14,13 +20,13 @@
         <% if @article.favorited_by?(current_user) %>
           <p>
             <%= link_to public_article_favorites_path(@article), method: :delete do %>
-              ♥<%= @article.favorites.count %> いいね
+              ♥<%= @article.favorites.count %>
             <% end %>
           </p>
           <% else %>
           <p>
             <%= link_to public_article_favorites_path(@article), method: :post do %>
-              ♡<%= @article.favorites.count %> いいね
+              ♡<%= @article.favorites.count %>
             <% end %>
           </p>
         <% end %>
@@ -41,12 +47,6 @@
           <% if post_comment.user == current_user %>
             <%= link_to "削除", public_article_post_comment_path(post_comment.article, post_comment), method: :delete %>
           <% end %>
-        <% end %>
-      </div>
-      <div>
-        <%= form_with model: [@article, @post_comment] do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-          <%= f.submit "送信する" %>
         <% end %>
       </div>
 
