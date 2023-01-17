@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     # get 'users/stat_update'
 
     resources :articles do
-      resources :likes, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
 

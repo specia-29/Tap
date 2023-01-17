@@ -6,8 +6,7 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   has_many :articles, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :liked_articles, through: :likes, source: :article
+  has_many :favorites, dependent: :destroy
   has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
   has_many :followings, through: :following_relationships
   has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
@@ -27,8 +26,8 @@ class User < ApplicationRecord
   end
 
 
-  def already_liked?(article)
-    self.likes.exists?(article_id: article.id)
+  def already_favorited?(article)
+    self.favorites.exists?(article_id: article.id)
   end
 
   def self.guest

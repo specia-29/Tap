@@ -20,7 +20,6 @@ class Public::ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @post_comment = PostComment.new
-    @like = Like.new
   end
 
   def edit
