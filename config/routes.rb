@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
+
     resources :users do
       member do
         get :following, :followers
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
 
     resources :articles do
       resources :likes, only: [:create, :destroy]
-      resources :post_comments, only: [:create]
+      resources :post_comments, only: [:create, :destroy]
     end
 
     get "search" => "searches#search"

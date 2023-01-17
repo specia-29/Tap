@@ -8,8 +8,12 @@ class Public::PostCommentsController < ApplicationController
     redirect_to post_image_path(post_image)
   end
 
-  private
+  def destroy
+    PostComment.find(params[:id]).destroy
+    redirect_to public_articles_path(params[:article_id])
+  end
 
+  private
   def post_comment_params
     params.require(:post_comment).permit(:comment)
   end
