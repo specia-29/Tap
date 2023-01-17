@@ -5,10 +5,10 @@ class Public::RelationshipsController < ApplicationController
     @relationship.save
     if @relationship.save
       flash[:notice] = @user.username += "さんをフォローしました！"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: public_articles_path)
     else
       flash[:notice] = @user.username += "さんのフォローに失敗しました。"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: public_articles_path)
     end
   end
 
@@ -19,10 +19,10 @@ class Public::RelationshipsController < ApplicationController
     @relationship.destroy
     if @relationship.destroy
       flash[:notice] = followed.username += "さんのフォローを解除しました。"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: public_articles_path)
     else
       flash[:notice] = followed.username += "さんのフォローの解除に失敗しました。"
-      redirect_back(fallback_location: root_path)
+      redirect_back(fallback_location: public_articles_path)
     end
   end
 end

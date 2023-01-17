@@ -24,6 +24,10 @@ class Public::ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    if @article.user == current_user
+    else
+      redirect_to public_article_path
+    end
   end
 
   def likes
