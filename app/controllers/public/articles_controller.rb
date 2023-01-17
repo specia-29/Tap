@@ -8,6 +8,8 @@ class Public::ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.order(created_at: :desc)
+    # @article = Article.find(params[:id])
+    # @user = @article.user.id
   end
 
   def create
