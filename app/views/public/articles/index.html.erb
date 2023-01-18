@@ -2,7 +2,7 @@
   <div class="row">
       <% @articles.each do |article| %>
       <div class="col-lg-12 mt-1 pb-3 border-bottom">
-        <%= link_to public_user_path(@user), class: "text-dark" do %>
+        <%= link_to public_user_path(article.user), class: "text-dark" do %>
           <% if article.user.profile_image.attached? %>
             <%= image_tag article.user.profile_image, class: "rounded-circle", size: "50x50" %>
           <% else %>
