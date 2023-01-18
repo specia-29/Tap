@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row">
-    <%= form_with model: @article, url: public_article_path do |f| %>
       <div class="col-lg-9">
         <div class="profile-link mt-2 mb-2">
           <%= link_to public_user_path(@user), class: "text-dark" do %>
@@ -11,36 +10,20 @@
             <% end %>
             <%= @article.user.user_name %>
           <% end %>
-        </div>
-        <% if @article.post_image.attached? %>
-          <%= image_tag @article.post_image, size: '600x400' %>
-        <% end %>
-
-<!--いいね機能-->
-        <% if @article.favorited_by?(current_user) %>
-          <p>
-            <%= link_to public_article_favorites_path(@article), method: :delete do %>
-              ♥<%= @article.favorites.count %>
-            <% end %>
-          </p>
+          <% if @article.user == current_user %>
+            <%= link_to "投稿を編集", edit_public_article_path(@article),class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 ml-5' %>
           <% else %>
-          <p>
-            <%= link_to public_article_favorites_path(@article), method: :post do %>
-              ♡<%= @article.favorites.count %>
-            <% end %>
-          </p>
-        <% end %>
-
-<!--いいね一覧-->
-        <p>いいねしたユーザー</p>
-        <% @article.favorited_users.each do |user| %>
-          <li><%= user.user_name %></li>
-        <% end %>
+            <div></div>
+          <% end %>
+        </div>
+          <% if @article.post_image.attached? %>
+            <%= image_tag @article.post_image, size: '840x560' %>
+          <% end %>
+          <%= safe_join(@article.body.split("\n"),tag(:br)) %>
 
 <!--コメント-->
       <div>
-        <p>コメント件数：<%= @article.post_comments.count %></p>
-        <% @article.post_comments.each do |post_comment| %>
+        <% @article.post_comments.each ＾do |post_comment| %>
           <%= image_tag post_comment.user.profile_image, class: "rounded-circle", size: "50x50" %>
           <%= post_comment.user.name %>
           <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
@@ -49,15 +32,35 @@
           <% end %>
         <% end %>
       </div>
+    </div>
 
-        <div class="row">
-          <div class="col-lg-2 ml-3"></div>
-          <% if @article.user == current_user %>
-            <%= link_to "投稿を編集", edit_public_article_path(@article),class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 mr-5' %>
-          <% else %>
-            <div></div>
+    <div class="col-lg-3 border-left">
+      <div class="article-reaction border-bottom d-flex  mt-3">
+        <!--いいね機能-->
+        <div class="favourite">
+          <% if @article.favorited_by?(current_user) %>
+              <%= link_to public_article_favorites_path(@article), method: :delete do %>
+              <i class="fas fa-heart fa-2x" style="color:#f4a460;"></i>
+              <% end %>
+                ♥<%= @article.favorites.count %>件
+            <% else %>
+              <%= link_to public_article_favorites_path(@article), method: :post do %>
+              <i class="fas fa-heart fa-2x" style="color:#dcdcdc;"></i>
+              <% end %>
+              <%= @article.favorites.count %>件
           <% end %>
         </div>
+        <div class="comment-count pl-3">
+          <i class="far fa-comment fa-2x"></i>
+          <%= @article.post_comments.count %>件
+        </div>
+      </div>
+        <!--いいね一覧-->
+        <p>いいねしたユーザー</p>
+        <% @article.favorited_users.each do |user| %>
+          <li><%= user.user_name %></li>
+        <% end %>
+
+    </div>
   </div>
 </div>
-<% end %>
