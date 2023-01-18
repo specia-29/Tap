@@ -8,12 +8,12 @@
           <% else %>
             <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
           <% end %>
-          <%= article.user.user_name %><br>
+          <%= article.user.user_name %>
         <% end %>
           <%#= render 'public/users/follow' %>
 　　　   <%# end %>
         <%= link_to public_article_path(article) do %>
-          <%= image_tag article.post_image, size: '900x600', class: "mt-2 mb-2" %><br>
+          <%= image_tag article.post_image, size: '1110x840', class: "mt-1 mb-2" %>
         <% end %>
           <%#= safe_join(article.body.split("\n"),tag(:br)) %>
       </div>
