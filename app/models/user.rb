@@ -13,7 +13,17 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
   has_many :post_comments, dependent: :destroy
 
-  validates :introduction, presence: true
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true,
+  format: { with: /\A([ァ-ン]|ー)+\z/, message: "is must NOT contain any other characters than alphanumerics." }
+  validates :first_name_kana, presence: true,
+  format: { with: /\A([ァ-ン]|ー)+\z/, message: "is must NOT contain any other characters than alphanumerics." }
+  validates :user_name, presence: true
+  validates :birth_date, presence: true
+  validates :phone_number, presence: true
+  validates :profile_image, presence: true
+
 
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)

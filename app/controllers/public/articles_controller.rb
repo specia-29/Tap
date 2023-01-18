@@ -15,8 +15,11 @@ class Public::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    @article.save
-    redirect_to public_articles_path
+    if @article.save
+      redirect_to public_articles_path
+    else
+      render :new
+    end
   end
 
   def show

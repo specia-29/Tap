@@ -15,7 +15,7 @@
         <%= link_to public_article_path(article) do %>
           <%= image_tag article.post_image, size: '900x600', class: "mt-2 mb-2" %><br>
         <% end %>
-          <%= safe_join(article.body.split("\n"),tag(:br)) %><br>
+          <%#= safe_join(article.body.split("\n"),tag(:br)) %>
       </div>
       <% end %>
   </div>

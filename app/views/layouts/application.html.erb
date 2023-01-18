@@ -17,7 +17,7 @@
         </button>
         <span class="navbar-toggler-icon"></span>
           <nav class="navbar navbar-expand-sm navbar-dark">
-            <%= link_to public_article_path do %>
+            <%= link_to public_articles_path do %>
               <%= image_tag "logo.png", size: '200x100' %>
             <% end %>
             <ul class="nav navbar-nav">
@@ -28,7 +28,7 @@
               <%= link_to new_public_article_path do %><i class="fas fa-camera"></i><% end %>
               <%= link_to public_articles_path do %><i class="fas fa-home"></i><% end %>
               <%= link_to public_user_path(current_user) do %><i class="fas fa-user"></i><% end %>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
+              <%= link_to destroy_user_session_path, method: :delete do %><i class="fas fa-sign-out-alt"></i><% end %>
 
               <% elsif admin_signed_in? %>
               <!--検索欄-->

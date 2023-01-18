@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
-
     resources :users do
       member do
         get :following, :followers

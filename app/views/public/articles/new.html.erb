@@ -1,5 +1,14 @@
 <div class="container">
 
+<% if @article.errors.any? %>
+  <%= @article.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @article.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @article, url: public_articles_path do |f| %>
   <div class="row mb-5 mt-5">
     <label class="col-lg-2">画像</label>
