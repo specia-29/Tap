@@ -9,14 +9,16 @@
       </div>
 
       <div class="col-lg-6 p-4">
-        <%= @user.user_name %><br>
-        <%= @user.introduction %><br>
-        <p>フォロー</p>
-        <p>フォロワー</p>
+        <p class="font-weight-bold"><%= @user.user_name %></p>
+        <%= safe_join(@user.introduction.split("\n"),tag(:br)) %><br>
+        <div class="pt-3 pb-1">
+          フォロー
+        </div>
+          フォロワー
       </div>
       <div class="col-lg-3 p-4">
         <% if @user == current_user %>
-          <%= link_to "プロフィール編集", edit_public_user_path(@user), class: "btn btn-success" %>
+          <%= link_to "プロフィール編集", edit_public_user_path(current_user), class: "btn btn-success" %>
         <% else %>
           <div></div>
         <% end %>

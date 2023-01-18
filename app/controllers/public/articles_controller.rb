@@ -1,6 +1,6 @@
 class Public::ArticlesController < ApplicationController
 
-  before_action :authenticate_user!, only: [:show, :create]
+  before_action :authenticate_user!
 
   def new
     @article = Article.new
@@ -47,7 +47,7 @@ class Public::ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to public_articles_path
+    redirect_to public_user_path(current_user)
   end
 
   private

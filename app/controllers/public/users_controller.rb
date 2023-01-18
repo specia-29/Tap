@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.all
@@ -10,8 +12,11 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to public_user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to public_user_path(current_user)
+    else
+      redirect_to edit_public_user_path(current_user)
+    end
   end
 
   def following

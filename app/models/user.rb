@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships
   has_many :post_comments, dependent: :destroy
 
+  validates :introduction, presence: true
+
   def following?(other_user)
     following_relationships.find_by(following_id: other_user.id)
   end
