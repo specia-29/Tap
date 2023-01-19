@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'articles/show'
+    get 'articles/edit'
+  end
   devise_scope :public do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
     get 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
@@ -12,7 +16,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'users' => 'users#index'
-    resources :users, only: [:edit, :show, :update]
+    resources :users, only: [:edit, :show, :update, :destroy]
+    get 'articles' => 'articles#index'
+    resources :articles, only: [:edit, :show, :update, :destroy]
   end
 
   # 顧客用

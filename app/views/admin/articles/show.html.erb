@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+      <div class="col-lg-9">
+        <div class="profile-link mt-2 mb-2">
+          <%= link_to admin_user_path(@user), class: "text-dark" do %>
+            <% if @article.user.profile_image.attached? %>
+              <%= image_tag @article.user.profile_image, class: "rounded-circle", size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+            <% end %>
+            <%= @article.user.user_name %>
+          <% end %>
+            <%= link_to "投稿を編集", edit_admin_article_path(@article),class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 ml-5' %>
+        </div>
+          <% if @article.post_image.attached? %>
+            <%= image_tag @article.post_image, size: '840x560' %>
+          <% end %>
+          <%= safe_join(@article.body.split("\n"),tag(:br)) %>
+
+<!--コメント-->
+      <div>
+        <% @article.post_comments.each do |post_comment| %>
+          <%= image_tag post_comment.user.profile_image, class: "rounded-circle", size: "50x50" %>
+          <%= post_comment.user.name %>
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除", public_article_post_comment_path(post_comment.article, post_comment), method: :delete %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-lg-3 border-left">
+      <div class="article-reaction border-bottom d-flex  mt-3">
+        <!--いいね機能-->
+        <div class="favourite">
+              <i class="fas fa-heart fa-2x" style="color:#f4a460;"></i>
+              <%= @article.favorites.count %>件
+        </div>
+        <div class="comment-count pl-3">
+          <i class="far fa-comment fa-2x"></i>
+          <%= @article.post_comments.count %>件
+        </div>
+      </div>
+        <!--いいね一覧-->
+        <p>いいねしたユーザー</p>
+        <% @article.favorited_users.each do |user| %>
+          <li><%= user.user_name %></li>
+        <% end %>
+
+    </div>
+  </div>
+</div>

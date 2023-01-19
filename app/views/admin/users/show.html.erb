@@ -16,8 +16,15 @@
       </div>
         フォロワー
     </div>
+    <div class="col-lg-3 p-4">
+      <%= link_to "削除する", edit_admin_user_path(@user), class: "btn btn-danger" %>
+      <%= form_with model: @user, url: public_article_path do |f| %>
+      <% end %>
+    </div>
   </div>
-  <%= link_to "削除する", edit_public_user_path(@user), class: "btn btn-danger" %>
-  <%= form_with model: @user, url: public_article_path do |f| %>
+  <% @articles.each do |article| %>
+    <%= link_to admin_article_path(article.id) do %>
+      <%= image_tag article.post_image, class: "m-3", size: "300x200" %>
+    <% end %>
   <% end %>
 </div>
