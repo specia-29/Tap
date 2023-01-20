@@ -1,6 +1,6 @@
 class Public::ArticlesController < ApplicationController
 
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!
 
   def new
     @article = Article.new
@@ -16,7 +16,7 @@ class Public::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     if @article.save
-      redirect_to public_articles_path
+      redirect_to root_path
     else
       render :new
     end

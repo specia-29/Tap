@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'public/articles#index'
+
   namespace :admin do
     get 'articles/show'
     get 'articles/edit'
@@ -35,9 +37,8 @@ Rails.application.routes.draw do
       end
     end
     resources :relationships, only: [:create, :destroy]
-    # get 'users/stat_update'
 
-    resources :articles do
+    resources :articles, only: [:new, :create, :show, :destroy, :edit] do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
