@@ -7,11 +7,11 @@ class Public::SearchesController < ApplicationController
   def search
     @range = params[:range]
 
-    if @range == "User"
+    if @range == "ユーザー"
       @users = User.looks(params[:search], params[:word])
       render "public/searches/search_result"
     else
-      @tags = Tag.looks(params[:search], params[:word])
+      @articles = Article.looks(params[:search], params[:word])
       render "public/searches/search_result"
     end
   end

@@ -6,7 +6,7 @@
           <% @users.each do |user| %>
             <tr>
               <td>
-              <%= link_to admin_user_path(user.id) do %>
+              <%= link_to admin_user_path(user) do %>
                   <% if user.profile_image.attached? %>
                     <%= image_tag user.profile_image, class: "rounded-circle", size: "60x60" %>
                   <% else %>
@@ -14,7 +14,7 @@
                   <% end %>
                 </td>
               <% end %>
-              <td class="align-middle"><%= user.user_name %></td>
+              <td class="align-middle"><%= link_to user.user_name, admin_user_path(user), class: "text-dark" %></td>
               <td></td>
               <td class="align-middle">フォロー</td>
               <td class="align-middle">フォロワー</td>
