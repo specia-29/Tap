@@ -16,7 +16,7 @@ class Public::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     if @article.save
-      redirect_to root_path
+      redirect_to public_articles_path
     else
       render :new
     end

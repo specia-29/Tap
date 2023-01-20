@@ -22,7 +22,6 @@ class User < ApplicationRecord
   validates :user_name, presence: true
   validates :birth_date, presence: true
   validates :phone_number, presence: true
-  validates :profile_image, presence: true
 
 
   def following?(other_user)
@@ -54,6 +53,14 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.last_name = 'ゲスト'
+      user.first_name = 'ログイン'
+      user.last_name_kana = 'ゲスト'
+      user.first_name_kana = 'ログイン'
+      user.user_name = 'guest_sign_in'
+      user.birth_date = '2023-1-20'
+      user.phone_number = '00000000000'
+      user.introduction = 'ゲストログイン中'
     end
   end
 

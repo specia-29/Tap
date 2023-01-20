@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'public/articles#index'
+  
 
   devise_scope :user do
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
     resources :relationships, only: [:create, :destroy]
 
-    resources :articles, only: [:new, :create, :show, :destroy, :edit] do
+    resources :articles do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end

@@ -11,7 +11,11 @@
           <tr>
             <td>
               <%= link_to public_user_path(user) do %>
-                <%= image_tag user.profile_image, class: "rounded-circle", size: "60x60" %>
+                <% if user.profile_image.attached? %>
+                  <%= image_tag user.profile_image, class: "rounded-circle", size: "60x60" %>
+                <% else %>
+                  <%= image_tag 'no_image', class: "rounded-circle", size: "60x60" %>
+                <% end %>
               <% end %>
             </td>
             <td class="align-middle"><%= link_to user.user_name, public_user_path(user), class: "text-dark" %></td>
