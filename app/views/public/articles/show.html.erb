@@ -42,6 +42,12 @@
           <% end %>
         <% end %>
       </div>
+      <div>
+        <%= form_with model: [@article, @post_comment] do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
     </div>
 
     <div class="col-lg-3 border-left">
