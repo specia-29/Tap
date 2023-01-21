@@ -36,11 +36,6 @@ class Public::ArticlesController < ApplicationController
     end
   end
 
-  def likes
-    @user = User.find_by(params[:id])
-    @likes = Liked.where(@user.id)
-  end
-
   def update
     @article = Article.find(params[:id])
     @article.update(article_params)

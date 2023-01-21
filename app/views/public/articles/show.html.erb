@@ -39,15 +39,15 @@
         <!--いいね機能-->
         <div class="favourite">
           <% if @article.favorited_by?(current_user) %>
-              <%= link_to public_article_favorites_path(@article), method: :delete do %>
+            <%= button_to public_article_favorites_path(@article), method: :delete do %>
               <i class="fas fa-heart fa-2x" style="color:#f4a460;"></i>
-              <% end %>
-                ♥<%= @article.favorites.count %>件
-            <% else %>
-              <%= link_to public_article_favorites_path(@article), method: :post do %>
-              <i class="fas fa-heart fa-2x" style="color:#dcdcdc;"></i>
-              <% end %>
               <%= @article.favorites.count %>件
+            <% end %>
+          <% else %>
+            <%= button_to public_article_favorites_path(@article), method: :post do %>
+              <i class="fas fa-heart fa-2x" style="color:#dcdcdc;"></i>
+              <%= @article.favorites.count %>件
+            <% end %>
           <% end %>
         </div>
         <div class="comment-count pl-3">
