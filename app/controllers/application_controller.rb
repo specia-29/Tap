@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   protected
   def configure_permitted_parameters
     # サインアップ時にnameのストロングパラメータを追加

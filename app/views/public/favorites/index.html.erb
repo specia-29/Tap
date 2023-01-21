@@ -1,0 +1,12 @@
+<div class="container border-right border-left">
+  <div class="row">
+    <h3 class="m-3">あなたがいいねした投稿</h2>
+    <div class="col-lg-12">
+      <% @favorite_articles.each do |article| %>
+        <%= link_to public_article_path(article.id) do %>
+          <%= image_tag article.post_image, class: "m-3", size: "333x222" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
