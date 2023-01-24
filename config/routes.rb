@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :relationships, only: [:create, :destroy]
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -27,11 +28,9 @@ Rails.application.routes.draw do
   namespace :public do
     resources :users do
       member do
-        get :following, :followers
         get "favorites" => "favorites#index"
       end
     end
-    resources :relationships, only: [:create, :destroy]
 
     resources :articles do
       resource :favorites, only: [:create, :destroy]
