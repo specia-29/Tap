@@ -20,10 +20,9 @@
         <% if @user == current_user %>
           <%= link_to "プロフィール編集", edit_public_user_path(current_user), class: "btn btn-success" %>
         <% else %>
-          <div></div>
+          <%= render 'relationships/follow_button', user: @user %>
         <% end %>
       </div>
-      <%= render 'relationships/follow_button', user: @user %>
   </div>
   <% @articles.each do |article| %>
     <%= link_to public_article_path(article.id) do %>
