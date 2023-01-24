@@ -23,7 +23,7 @@
           <div></div>
         <% end %>
       </div>
-      <%= render 'public/relationships/follow_button', user: @user %>
+      <%= render 'relationships/follow_button', user: @user %>
   </div>
   <% @articles.each do |article| %>
     <%= link_to public_article_path(article.id) do %>
