@@ -7,10 +7,10 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :following_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
-  has_many :followings, through: :following_relationships
-  has_many :follower_relationships, foreign_key: "following_id", class_name: "Relationship", dependent: :destroy
-  has_many :followers, through: :follower_relationships
+  has_many :relationships, foreign_key: 'user_id'
+  has_many :followings, through: :relationships, source: :follow
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
   has_many :post_comments, dependent: :destroy
 
   validates :last_name, presence: true
@@ -23,20 +23,23 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validates :phone_number, presence: true
 
+# フォロー機能
+  def follow(other_user)
+    unless self == other_user
+      self.relationships.find_or_create_by(follow_id: other_user.id)
+    end
+  end
+
+  def unfollow(other_user)
+    relationship = self.relationships.find_by(follow_id: other_user.id)
+    relationship.destroy if relationship
+  end
 
   def following?(other_user)
-    following_relationships.find_by(following_id: other_user.id)
+    self.followings.include?(other_user)
   end
 
-  def follow!(other_user)
-    following_relationships.create!(following_id: other_user.id)
-  end
-
-  def unfollow!(other_user)
-    following_relationships.find_by(follower_id: other_user.id)
-  end
-
-
+# いいね機能
   def already_favorited?(article)
     self.favorites.exists?(article_id: article.id)
   end
