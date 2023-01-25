@@ -1,15 +1,14 @@
 class Public::ArticlesController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show, :index]
 
   def new
     @article = Article.new
   end
 
   def index
-    @articles = Article.all.order(created_at: :desc)
-    # @article = Article.find(params[:id])
-    # @user = @article.user.id
+    # @articles = Article.all.order(created_at: :desc)
+    @articles = Article.where(user_id: [current_user.id, *current_user.following_ids])
   end
 
   def create

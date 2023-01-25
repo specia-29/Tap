@@ -14,7 +14,13 @@
                   <% end %>
                 </td>
               <% end %>
-              <td class="align-middle"><%= link_to user.user_name, public_user_path(user), class: "text-dark" %></td>
+              <td class="align-middle">
+                <% if user_signed_in? %>
+                  <%= link_to user.user_name, public_user_path(user), class: "text-dark" %>
+                <% else %>
+                  <%= link_to user.user_name, admin_user_path(user), class: "text-dark" %>
+                <% end %>
+              </td>
               <td></td>
               <td></td>
             </tr>
