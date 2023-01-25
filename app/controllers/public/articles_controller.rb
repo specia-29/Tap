@@ -7,8 +7,7 @@ class Public::ArticlesController < ApplicationController
   end
 
   def index
-    # @articles = Article.all.order(created_at: :desc)
-    @articles = Article.where(user_id: [current_user.id, *current_user.following_ids])
+    @articles = Article.where(user_id: [current_user.id, *current_user.following_ids]).order(created_at: :desc)
   end
 
   def create
