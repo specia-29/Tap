@@ -8,6 +8,10 @@ class Public::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if user_signed_in? && @user.id == current_user.id
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -29,10 +33,6 @@ class Public::UsersController < ApplicationController
     @user  = User.find(params[:id])
     @users = @user.followers
     render 'show_follower'
-  end
-
-  def stat_update
-    @user = current_user
   end
 
   private

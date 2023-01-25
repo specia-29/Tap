@@ -48,7 +48,7 @@
           </div>
           <div class="col-lg-3"></div>
           <div class="col-lg-3">
-            <%= link_to "退会する", public_user_path(@user.id), method: :patch, "data-confirm" => "本当に退会しますか？", class: 'mt-2 btn btn-danger' %>
+            <%= button_to "退会する", public_users_hide_path(current_user), method: :put, "data-confirm" => "本当に退会しますか？", class: 'mt-2 btn btn-danger' %>
           </div>
         </div>
         <% end %>
