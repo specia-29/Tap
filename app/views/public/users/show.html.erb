@@ -12,9 +12,15 @@
         <p class="font-weight-bold"><%= @user.user_name %></p>
         <%= safe_join(@user.introduction.split("\n"),tag(:br)) %><br>
         <div class="pt-3 pb-1">
-          フォロー
+          <%= link_to followings_path do %>
+            フォロー
+            <%= @user.followings.count %>
+          <% end %>
         </div>
-          フォロワー
+          <%= link_to followers_path do %>
+            フォロワー
+            <%= @user.followers.count %>
+          <% end %>
       </div>
       <div class="col-lg-3 p-4">
         <% if @user == current_user %>

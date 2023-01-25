@@ -53,7 +53,7 @@
     <div class="col-lg-3 border-left">
       <div class="article-reaction border-bottom d-flex  mt-3">
         <!--いいね機能-->
-        <div class="favourite">
+        <div class="favorite">
           <% if @article.favorited_by?(current_user) %>
               <i class="fas fa-heart fa-2x" style="color:#f4a460;"></i>
               <%= @article.favorites.count %>件

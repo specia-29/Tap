@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
+  get '/public/users/:id/followings' => 'relationships#followings', as: 'followings'
+  get '/public/users/:id/followers' => 'relationships#followers', as: 'followers'
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
