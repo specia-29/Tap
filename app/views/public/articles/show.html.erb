@@ -35,7 +35,7 @@
       <div class="border-top">
         <div class="comment-form mt-2">
           <%= form_with model: [@article, @post_comment], url: public_article_post_comments_path(@article) do |f| %>
-            <%= f.text_field :comment,  size: 40, placeholder: "コメントはこちらへ" %>
+            <%= f.text_field :comment,  size: 45, placeholder: "コメントはこちらへ" %>
             <%= f.submit "送信する", class: "btn btn-outline-dark btn-sm" %>
           <% end %>
         </div>
