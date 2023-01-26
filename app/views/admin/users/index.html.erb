@@ -15,7 +15,13 @@
                 </td>
               <% end %>
               <td class="align-middle"><%= link_to user.user_name, admin_user_path(user), class: "text-dark" %></td>
-              <td></td>
+              <td class="align-middle">
+                <% if user.is_deleted == false %>
+                  <p class="text-success font-weight-bold mb-0">有効</p>
+                <% else %>
+                  <p class="text-secondary font-weight-bold mb-0">退会</p>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
