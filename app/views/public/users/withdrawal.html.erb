@@ -1,0 +1,15 @@
+<!--customers_withdrawal_path-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <div class="mt-5 text-center d-flex">
+        <p class="font-weight-bold">本当に退会しますか？</p>
+        <div class="button d-flex">
+          <%= button_to "退会する", public_user_destroy_user_path(@user), method: :patch, class: 'mr-3 ml-5 btn btn-danger' %>
+          <%= link_to "退会しない", public_user_path(@user), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

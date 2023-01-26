@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :users do
+      get 'withdrawal', to: 'users#withdrawal'
+      patch 'stat_update', to: 'users#stat_update', as: 'destroy_user'
       member do
         get "favorites" => "favorites#index"
       end

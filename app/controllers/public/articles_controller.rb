@@ -46,7 +46,6 @@ class Public::ArticlesController < ApplicationController
     redirect_to public_user_path(current_user)
   end
 
-
   private
   def article_params
     params.require(:article).permit(:body, :post_image, :user_id, :article_id)
