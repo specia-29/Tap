@@ -108,11 +108,12 @@ ActiveRecord::Schema.define(version: 2023_01_24_065522) do
     t.string "user_name"
     t.date "birth_date"
     t.string "phone_number"
-    t.boolean "is_deleted", default: false
+    t.boolean "is_deleted", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "profile_image"
     t.string "introduction"
+    t.integer "status", limit: 1, default: 1, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
