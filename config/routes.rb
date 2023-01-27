@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :show, :update, :destroy]
     get 'articles' => 'articles#index'
     resources :articles, only: [:edit, :show, :update, :destroy]
+    get "search" => "searches#search"
+    get "search/result" => "searches#search"
   end
 
 

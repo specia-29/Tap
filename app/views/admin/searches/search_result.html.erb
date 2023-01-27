@@ -1,0 +1,48 @@
+<div class="container border-right border-left">
+  <h2 class="m-2">検索結果</h2>
+  <div class="row">
+    <div class="col-lg-12 center-block"></div>
+
+  <!--検索対象モデルがUserの時 -->
+  <table class="table table-hover table-inverse">
+    <% if @range == "ユーザー" %>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= link_to admin_user_path(user) do %>
+                <% if user.profile_image.attached? %>
+                  <%= image_tag user.profile_image, class: "rounded-circle", size: "60x60" %>
+                <% else %>
+                  <%= image_tag 'no_image', class: "rounded-circle", size: "60x60" %>
+                <% end %>
+              <% end %>
+            </td>
+            <td class="align-middle"><%= link_to user.user_name, admin_user_path(user), class: "text-dark" %></td>
+            <td class="align-middle">
+              <%= link_to followings_path(user), class: 'text-muted' do %>
+                フォロー
+                <%= user.followings.count %>人
+              <% end %>
+            </td>
+            <td class="align-middle">
+              <%= link_to followers_path(user), class: 'text-muted' do %>
+                フォロワー
+                <%= user.followers.count %>人
+              <% end %>
+            </td>
+  　　　    </tr>
+        <% end %>
+      </tbody>
+        <% else %>
+        <!--検索対象モデルがUserではない時(= 検索対象モデルがArticleの時) -->
+          <% @articles.each do |article| %>
+            <%= link_to admin_article_path(article.id) do %>
+              <%= image_tag article.post_image, class: "m-3", size: "345x230" %>
+            <% end %>
+          <% end %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

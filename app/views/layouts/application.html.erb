@@ -2,59 +2,70 @@
 <html>
   <head>
     <title>Tap</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
     <body class="vh-100">
-    <header class="shadow-sm">
-      <div class="container">
-        <div class="row">
-          <nav class="navbar navbar-expand-sm navbar-dark">
-            <%= link_to public_articles_path do %>
-              <%= image_tag "logo.png", size: '200x100', class: "mr-5" %>
-            <% end %>
-            <ul class="nav navbar-nav">
+      <header class="shadow-sm">
+        <div class="container">
+          <div class="row">
+
+            <!--ロゴ-->
+            <nav class="navbar navbar-expand-sm navbar-dark">
               <% if user_signed_in? %>
-              <div class="d-flex">
-              <div class="search mr-5 ml-5">
-                <li><%= render 'public/searches/search' %></li>
-              </div>
-              <div class="d-flex ml-5 mr-5">
-                <li class="mr-4"><%= link_to favorites_public_user_path(current_user) do %><i class="fas fa-heart fa-2x"  style="color:#f4a460;"></i><% end %></li>
-                <li class="mr-4"><%= link_to new_public_article_path do %><i class="fas fa-camera fa-2x" style="color:#f4a460;"></i><% end %></li>
-                <li class="mr-4"><%= link_to public_articles_path do %><i class="fas fa-home fa-2x"  style="color:#f4a460;"></i><% end %></li>
-                <li class="mr-4"><%= link_to public_user_path(current_user) do %><i class="fas fa-user fa-2x"  style="color:#f4a460;"></i><% end %></li>
-                <li><%= link_to destroy_user_session_path, method: :delete do %><i class="fas fa-sign-out-alt fa-2x"  style="color:#f4a460;"></i><% end %></li>
-              </div>
-              </div>
-
+                <%= link_to public_articles_path do %>
+                  <%= image_tag "logo.png", size: '200x100', class: "mr-5" %>
+                <% end %>
               <% elsif admin_signed_in? %>
-              <!--検索欄-->
-              <div class="search mr-5 ml-5">
-                <li><%= render 'public/searches/search' %></li>
-              </div>
-              <li class="nav-item"><%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
-
+                <%= link_to admin_users_path do %>
+                  <%= image_tag "logo.png", size: '200x100', class: "mr-5" %>
+                <% end %>
               <% else %>
-              <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= link_to "ログイン", root_path, class: 'nav-link text-dark border ml-5' %></li>
-              <li class="nav-item"><%= button_to 'ゲストログイン', public_guest_sign_in_path, method: :post, class: 'nav-link text-dark border ml-5' %></li>
+                <%= image_tag "logo.png", size: '200x100', class: "mr-5" %>
               <% end %>
-            </ul>
-          </nav>
-          </div>
-        </div>
-      </header>
 
+              <!--User header-->
+              <ul class="nav navbar-nav">
+                <% if user_signed_in? %>
+                <div class="d-flex">
+                  <div class="search mr-5 ml-5">
+                    <li><%= render 'public/searches/search' %></li>
+                  </div>
+                  <div class="d-flex ml-5 mr-5">
+                    <li class="mr-4"><%= link_to favorites_public_user_path(current_user) do %><i class="fas fa-heart fa-2x"  style="color:#f4a460;"></i><% end %></li>
+                    <li class="mr-4"><%= link_to new_public_article_path do %><i class="fas fa-camera fa-2x" style="color:#f4a460;"></i><% end %></li>
+                    <li class="mr-4"><%= link_to public_articles_path do %><i class="fas fa-home fa-2x"  style="color:#f4a460;"></i><% end %></li>
+                    <li class="mr-4"><%= link_to public_user_path(current_user) do %><i class="fas fa-user fa-2x"  style="color:#f4a460;"></i><% end %></li>
+                    <li><%= link_to destroy_user_session_path, method: :delete do %><i class="fas fa-sign-out-alt fa-2x"  style="color:#f4a460;"></i><% end %></li>
+                  </div>
+                </div>
+
+                <!--Admin header-->
+                <% elsif admin_signed_in? %>
+                  <div class="search mr-5 ml-5">
+                    <li><%= render 'admin/searches/search' %></li>
+                  </div>
+                  <li class="nav-item"><%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark border ml-5' %></li>
+                  <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
+
+                <!--ログアウト状態-->
+                <% else %>
+                  <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark border ml-5' %></li>
+                  <li class="nav-item"><%= link_to "ログイン", root_path, class: 'nav-link text-dark border ml-5' %></li>
+                  <li class="nav-item"><%= button_to 'ゲストログイン', public_guest_sign_in_path, method: :post, class: 'nav-link text-dark border ml-5' %></li>
+                <% end %>
+              </ul>
+            </nav>
+            </div>
+          </div>
+        </header>
       <main>
       <%= yield %>
       </main>
-
     </body>
 </html>

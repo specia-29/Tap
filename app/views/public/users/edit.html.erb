@@ -1,55 +1,54 @@
 <div class="container">
   <div class="row">
     <h3 class="col-lg-3 mb-5 mt-5 text-dark text-center">プロフィール編集</h3>
-        <%= form_with model: @user, url: public_user_path do |f| %>
+    <%= form_with model: @user, url: public_user_path do |f| %>
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
 
-    <% if @user.errors.any? %>
-      <%= @user.errors.count %>件のエラーが発生しました
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+  <div class="row mb-3">
+    <label class="col-lg-3">プロフィール画像</label>
+    <div class="col-lg-6 d-flex align-items-center">
+      <div class="mr-5">
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image, class: "rounded-circle", size: "100x100" %>
+        <% else %>
+          <%= image_tag 'no_image', class: "rounded-circle", size: "100x100" %>
         <% end %>
-      </ul>
-    <% end %>
-
       </div>
-        <div class="row mb-3">
-          <label class="col-lg-3">プロフィール画像</label>
-          <div class="col-lg-6 d-flex align-items-center">
-            <div class="mr-5">
-              <% if @user.profile_image.attached? %>
-                <%= image_tag @user.profile_image, class: "rounded-circle", size: "100x100" %>
-              <% else %>
-                <%= image_tag 'no_image', class: "rounded-circle", size: "100x100" %>
-              <% end %>
-            </div>
-              <%= f.file_field :profile_image %>
-          </div>
-        </div>
+        <%= f.file_field :profile_image %>
+    </div>
+  </div>
 
-        <div class="row">
-          <label class="col-lg-3">ニックネーム</label>
-          <div class="col-lg-3">
-            <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
-          </div>
-        </div><br>
-        <div class="row">
-          <label class="col-lg-3">自己紹介</label>
-          <div class="col-lg-3">
-            <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", cols: 50, rows: 5 %>
-          </div>
-        </div><br>
+  <div class="row">
+    <label class="col-lg-3">ニックネーム</label>
+    <div class="col-lg-3">
+      <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name" %>
+    </div>
+  </div><br>
+  <div class="row">
+    <label class="col-lg-3">自己紹介</label>
+    <div class="col-lg-3">
+      <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction", cols: 50, rows: 5 %>
+    </div>
+  </div><br>
 
-        <p><%= f.check_box :remove_img %>　非公開アカウント</p>
+  <p><%= f.check_box :remove_img %>　非公開アカウント</p>
 
-        <div class="row">
-          <div class="col-lg-3">
-            <%= f.submit "編集内容を保存", class: 'btn btn-success w-100' %>
-          </div>
-          <div class="col-lg-3"></div>
-          <div class="col-lg-3">
-            <%= link_to "退会する", public_user_withdrawal_path(@user), method: :put, "data-confirm" => "本当に退会しますか？", class: 'mt-2 btn btn-danger' %>
-          </div>
-        </div>
-        <% end %>
+  <div class="row">
+    <div class="col-lg-3">
+      <%= f.submit "編集内容を保存", class: 'btn btn-success w-100' %>
+    </div>
+    <div class="col-lg-3"></div>
+    <div class="col-lg-3">
+      <%= link_to "退会する", public_user_withdrawal_path(@user), method: :put, "data-confirm" => "本当に退会しますか？", class: 'mt-2 btn btn-danger' %>
+    </div>
+  </div>
+  <% end %>
 </div>
