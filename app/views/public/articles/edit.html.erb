@@ -1,17 +1,16 @@
 <div class="container">
-
-<%= form_with model: @article, url: public_article_path do |f| %>
-  <div class="row mt-5">
-    <label class="col-lg-2">キャプション</label>
-    <div class="col-lg-3">
-      <%= f.text_area :body, autofocus: true, autocomplete: "email", cols: 50, rows: 10 %>
+  <%= form_with model: @article, url: public_article_path do |f| %>
+    <div class="row mt-5">
+      <label class="col-lg-2">キャプション</label>
+      <div class="col-lg-3">
+        <%= f.text_area :body, autofocus: true, autocomplete: "email", cols: 50, rows: 10 %>
+      </div>
     </div>
-  </div>
 
     <div class="row">
       <div class="col-lg-2 ml-3"></div>
-      <%= button_to "変更を保存", public_article_path(@article), method: :patch, class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 mr-5' %>
-      <%= button_to "投稿を削除", public_article_path(@article), method: :delete, class: 'btn btn-danger border-dark pl-5 pr-5', "data-confirm" => "本当に削除しますか？"  %>
+        <%= button_to "変更を保存", public_article_path(@article), method: :patch, class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 mr-5' %>
+        <%= button_to "投稿を削除", public_article_path(@article), method: :delete, class: 'btn btn-danger border-dark pl-5 pr-5', "data-confirm" => "本当に削除しますか？"  %>
     </div>
+  <% end %>
 </div>
-<% end %>

@@ -7,22 +7,23 @@
           <%= image_tag 'no_image', class: "rounded-circle", size: "180x180" %>
         <% end %>
       </div>
-
-      <div class="col-lg-6 p-4">
+      <div class="profile col-lg-6 p-4">
         <p class="font-weight-bold"><%= @user.user_name %></p>
         <%= safe_join(@user.introduction.split("\n"),tag(:br)) %><br>
-        <div class="pt-3 pb-1">
+        <div class="following-count pt-3 pb-1">
           <%= link_to followings_path, class: 'text-muted' do %>
             フォロー
             <%= @user.followings.count %>人
           <% end %>
         </div>
+        <div class="followers-count">
           <%= link_to followers_path, class: 'text-muted' do %>
             フォロワー
             <%= @user.followers.count %>人
           <% end %>
+        </div>
       </div>
-      <div class="col-lg-3 p-4">
+      <div class="edit-button col-lg-3 p-4">
         <% if @user == current_user %>
           <%= link_to "プロフィール編集", edit_public_user_path(current_user), class: "btn btn-success" %>
         <% else %>
@@ -30,9 +31,12 @@
         <% end %>
       </div>
   </div>
-  <% @articles.each do |article| %>
-    <%= link_to public_article_path(article.id) do %>
-      <%= image_tag article.post_image, class: "m-3", size: "333x222" %>
+
+  <div class="articles">
+    <% @articles.each do |article| %>
+      <%= link_to public_article_path(article.id) do %>
+        <%= image_tag article.post_image, class: "m-3", size: "333x222" %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>

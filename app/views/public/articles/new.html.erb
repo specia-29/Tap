@@ -1,32 +1,32 @@
 <div class="container">
 
-<% if @article.errors.any? %>
-  <%= @article.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @article.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <% if @article.errors.any? %>
+    <%= @article.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @article.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+  <% end %>
 
-<%= form_with model: @article, url: public_articles_path do |f| %>
-  <div class="row mb-5 mt-5">
-    <label class="col-lg-2">画像</label>
-    <div class="col-lg-3">
-      <%= f.file_field :post_image, accept: "image/*" %>
+  <%= form_with model: @article, url: public_articles_path do |f| %>
+    <div class="row mb-5 mt-5">
+      <label class="col-lg-2">画像</label>
+        <div class="col-lg-3">
+          <%= f.file_field :post_image, accept: "image/*" %>
+        </div>
     </div>
-  </div>
 
-  <div class="row mb-5">
-    <label class="col-lg-2">キャプション</label>
-    <div class="col-lg-3">
-      <%= f.text_area :body, autofocus: true, autocomplete: "body", cols: 50, rows: 10, placeholder: "キャプションを入力してください" %>
+    <div class="row mb-4">
+      <label class="col-lg-2">キャプション</label>
+        <div class="col-lg-3">
+          <%= f.text_area :body, autofocus: true, autocomplete: "body", cols: 50, rows: 10, placeholder: "キャプションを入力してください" %>
+        </div>
     </div>
-  </div>
 
     <div class="row">
       <div class="col-lg-2 ml-3"></div>
       <%= f.submit "投稿", class: 'btn btn-primary font-weight-bold border-dark pl-5 pr-5' %>
     </div>
+  <% end %>
 </div>
-<% end %>

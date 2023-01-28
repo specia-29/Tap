@@ -18,7 +18,9 @@
                 <% end %>
               <% end %>
             </td>
-            <td class="align-middle"><%= link_to user.user_name, public_user_path(user), class: "text-dark" %></td>
+            <td class="align-middle">
+              <%= link_to user.user_name, public_user_path(user), class: "text-dark" %>
+            </td>
             <td class="align-middle">
               <%= link_to followings_path(user), class: 'text-muted' do %>
                 フォロー
@@ -35,14 +37,13 @@
         <% end %>
       </tbody>
         <% else %>
-        <!--検索対象モデルがUserではない時(= 検索対象モデルがArticleの時) -->
+        <!--検索対象モデルがArticleの時 -->
           <% @articles.each do |article| %>
             <%= link_to public_article_path(article.id) do %>
               <%= image_tag article.post_image, class: "m-3", size: "345x230" %>
             <% end %>
           <% end %>
       <% end %>
-
     </div>
   </div>
 </div>

@@ -4,7 +4,6 @@ class Admin::UsersController < ApplicationController
 
   def index
     @users = User.all
-    # @user = User.find(params[:id])
   end
 
   def show
@@ -20,7 +19,6 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to admin_user_path(@user)
-      flash[:notice_update] = "ジャンル情報を更新しました！"
     else
       @users = User.all
       render 'edit'
