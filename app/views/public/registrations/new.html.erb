@@ -4,90 +4,90 @@
     <h2 class="col-lg-2 mb-5 mt-5 bg-warning text-dark text-center">新規登録</h2>
   </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-<div class="justify-content-center">
-  <div class="row mb-2">
-    <label class="col-lg-3">プロフィール画像</label>
-    <div class="col-lg-3">
-      <%= f.file_field :profile_image, accept: "image/*" %>
-    </div>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    <div class="justify-content-center">
+      <div class="row mb-2">
+        <label class="col-lg-3">プロフィール画像</label>
+        <div class="col-lg-3">
+          <%= f.file_field :profile_image, accept: "image/*" %>
+        </div>
+      </div>
 
-  <div class="row mb-2">
-    <label class="col-lg-3">名前</label>
-    <div class="col-lg-3">
-      <%= f.text_field :last_name,autoforcus: true, autocomplete: "last_name",  placeholder: "山田" %>
+    <div class="row mb-2">
+      <label class="col-lg-3">名前</label>
+      <div class="col-lg-3">
+        <%= f.text_field :last_name,autoforcus: true, autocomplete: "last_name",  placeholder: "山田" %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :first_name,autoforcus: true, autocomplete: "first_name",  placeholder: "花子" %>
+      </div>
     </div>
-    <div class="col-lg-3">
-      <%= f.text_field :first_name,autoforcus: true, autocomplete: "first_name",  placeholder: "花子" %>
-    </div>
-  </div>
 
-  <div class="row mb-2">
-    <label class="col-lg-3">フリガナ</label>
-    <div class="col-lg-3">
-      <%= f.text_field :last_name_kana,autoforcus: true, autocomplete: "last_name_kana",  placeholder: "ヤマダ" %>
+    <div class="row mb-2">
+      <label class="col-lg-3">フリガナ</label>
+      <div class="col-lg-3">
+        <%= f.text_field :last_name_kana,autoforcus: true, autocomplete: "last_name_kana",  placeholder: "ヤマダ" %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.text_field :first_name_kana,autoforcus: true, autocomplete: "first_name_kana",  placeholder: "ハナコ" %>
+      </div>
     </div>
-    <div class="col-lg-3">
-      <%= f.text_field :first_name_kana,autoforcus: true, autocomplete: "first_name_kana",  placeholder: "ハナコ" %>
-    </div>
-  </div>
 
-  <div class="row mb-2">
-    <label class="col-lg-3">メールアドレス</label>
-    <div class="col-lg-3">
-      <%= f.text_field :email, autofocus: true, autocomplete: "email", size: 40,  placeholder: "y.hanako@example.com" %>
+    <div class="row mb-2">
+      <label class="col-lg-3">メールアドレス</label>
+      <div class="col-lg-3">
+        <%= f.text_field :email, autofocus: true, autocomplete: "email", size: 40,  placeholder: "y.hanako@example.com" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row mb-2">
-    <label class="col-lg-3">ユーザー名</label>
-    <div class="col-lg-3">
-      <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name",  placeholder: "yamada_0000" %>
+    <div class="row mb-2">
+      <label class="col-lg-3">ユーザー名</label>
+      <div class="col-lg-3">
+        <%= f.text_field :user_name, autofocus: true, autocomplete: "user_name",  placeholder: "yamada_0000" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row mb-2">
-    <label class="col-lg-3">生年月日</label>
-    <div class="col-lg-3">
-      <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 0), default: Date.new(2000, 1, 1) %>
+    <div class="row mb-2">
+      <label class="col-lg-3">生年月日</label>
+      <div class="col-lg-3">
+        <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 0), default: Date.new(2000, 1, 1) %>
+      </div>
     </div>
-  </div>
 
-  <div class="row mb-2">
-    <label class="col-lg-3">電話番号(ハイフンなし)</label>
-    <div class="col-lg-3">
-      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",  placeholder: "09011112222" %>
+    <div class="row mb-2">
+      <label class="col-lg-3">電話番号(ハイフンなし)</label>
+      <div class="col-lg-3">
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",  placeholder: "09011112222" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row mb-2">
-    <label class="col-lg-3">パスワード(6文字以上)</label>
-    <div class="col-lg-3">
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <div class="row mb-2">
+      <label class="col-lg-3">パスワード(6文字以上)</label>
+      <div class="col-lg-3">
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
     </div>
-  </div>
 
-  <div class="row mb-5">
-    <label class="col-lg-3">パスワード(確認用)</label>
-    <div class="col-lg-3">
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <div class="row mb-5">
+      <label class="col-lg-3">パスワード(確認用)</label>
+      <div class="col-lg-3">
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "登録", class: 'btn btn-warning font-weight-bold border-dark pl-5 pr-5' %>
+      </div>
     </div>
-    <div class="actions">
-      <%= f.submit "登録", class: 'btn btn-warning font-weight-bold border-dark pl-5 pr-5' %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
 
   <div class="col-lg-9 border-bottom border-dark"></div>
 
     <div class="row align-items-center mt-5">
       <div class="col-lg-2"></div>
-      <h4 class="font-weight-bold mr-1">ログイン</h4>はこちらから
-      <i class="fas fa-caret-right ml-3 mr-1"></i>
-      <i class="fas fa-caret-right mr-1"></i>
-      <i class="fas fa-caret-right mr-3"></i>
+        <h4 class="font-weight-bold mr-1">ログイン</h4>はこちらから
+        <i class="fas fa-caret-right ml-3 mr-1"></i>
+        <i class="fas fa-caret-right mr-1"></i>
+        <i class="fas fa-caret-right mr-3"></i>
       <%= link_to "ログイン", new_user_session_path, class: 'btn btn-info btn-lg text-dark font-weight-bold border-dark' %>
     </div>
   </div>
