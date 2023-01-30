@@ -1,34 +1,28 @@
 <div class="container">
-
   <div class="row">
     <h2 class="col-lg-2 mb-5 mt-5 bg-info text-dark text-center">ログイン</h2>
   </div>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-<div class="justify-content-center">
-
-  <div class="row mt-5 mb-5">
-    <label class="col-lg-3">メールアドレス</label>
-    <div class="col-lg-3">
-      <%= f.text_field :email, autofocus: true, autocomplete: "email", size: 40,  placeholder: "y.hanako@example.com" %>
-    </div>
-  </div>
-
-  <div class="row mb-5">
-    <label class="col-lg-3">パスワード(6文字以上)</label>
-    <div class="col-lg-3">
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-  </div>
-
-    <div class="actions">
-      <%= f.submit "ログイン", class: 'btn btn-primary font-weight-bold text-light border-dark pl-5 pr-5' %>
-    </div>
-<% end %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
+    <div class="justify-content-center">
+      <div class="row mt-5 mb-5">
+        <label class="col-lg-3">メールアドレス</label>
+        <div class="col-lg-3">
+          <%= f.text_field :email, autofocus: true, autocomplete: "email", size: 40,  placeholder: "y.hanako@example.com" %>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <label class="col-lg-3">パスワード(6文字以上)</label>
+        <div class="col-lg-3">
+        <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+      </div>
+      <div class="actions">
+        <%= f.submit "ログイン", class: 'btn btn-primary font-weight-bold text-light border-dark pl-5 pr-5' %>
+      </div>
+    <% end %>
 
   <div class="col-lg-9 border-bottom border-dark mt-5 mb-5"></div>
-
     <div class="row align-items-center">
       <div class="col-lg-2"></div>
       <h4 class="font-weight-bold mr-1">新規登録</h4>はこちらから
