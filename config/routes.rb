@@ -6,9 +6,14 @@ Rails.application.routes.draw do
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
-}
+  }
+
+  devise_scope :user do
+    delete 'admin/sign_out' => 'admin/sessions#destroy'
+  end
 
   namespace :admin do
+    #delete 'sign_out' => 'sessions#destroy'
     get 'users' => 'users#index'
     resources :users, only: [:edit, :show, :update, :destroy]
     get 'articles' => 'articles#index'
@@ -21,6 +26,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     root "public/sessions#new"
+    delete 'users/sign_out' => 'public/sessions#destroy'
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
@@ -31,7 +37,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :users do
-      get 'withdrawal', to: 'users#withdrawal'
+      put 'withdrawal', to: 'users#withdrawal'
       patch 'stat_update', to: 'users#stat_update', as: 'destroy_user'
       member do
         get "favorites" => "favorites#index"

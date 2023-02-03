@@ -51,7 +51,7 @@
                     <li><%= render 'admin/searches/search' %></li>
                   </div>
                   <li class="nav-item"><%= link_to "ユーザー一覧", admin_users_path, class: 'nav-link text-dark border ml-5' %></li>
-                  <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
+                  <li class="nav-item"><%= link_to "ログアウト", admin_sign_out_path, method: :delete, class: 'nav-link text-dark border ml-5' %></li>
 
                 <!--ログアウト状態-->
                 <% else %>
