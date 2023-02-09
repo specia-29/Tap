@@ -14,7 +14,7 @@ class Public::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     if @article.save
-      redirect_to public_articles_path
+      redirect_to articles_path
     else
       render :new
     end
@@ -30,20 +30,20 @@ class Public::ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     if @article.user == current_user
     else
-      redirect_to public_article_path
+      redirect_to article_path
     end
   end
 
   def update
     @article = Article.find(params[:id])
     @article.update(article_params)
-    redirect_to public_article_path(@article.id)
+    redirect_to article_path(@article.id)
   end
 
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to public_user_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   private

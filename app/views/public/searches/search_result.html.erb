@@ -10,7 +10,7 @@
         <% @users.each do |user| %>
           <tr>
             <td>
-              <%= link_to public_user_path(user) do %>
+              <%= link_to user_path(user) do %>
                 <% if user.profile_image.attached? %>
                   <%= image_tag user.profile_image, class: "rounded-circle", size: "60x60" %>
                 <% else %>
@@ -19,7 +19,7 @@
               <% end %>
             </td>
             <td class="align-middle">
-              <%= link_to user.user_name, public_user_path(user), class: "text-dark" %>
+              <%= link_to user.user_name, user_path(user), class: "text-dark" %>
             </td>
             <td class="align-middle">
               <%= link_to followings_path(user), class: 'text-muted' do %>
@@ -39,7 +39,7 @@
         <% else %>
         <!--検索対象モデルがArticleの時 -->
           <% @articles.each do |article| %>
-            <%= link_to public_article_path(article.id) do %>
+            <%= link_to article_path(article.id) do %>
               <%= image_tag article.post_image, class: "m-3", size: "345x230" %>
             <% end %>
           <% end %>

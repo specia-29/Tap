@@ -5,13 +5,13 @@ class Public::PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.article_id = article.id
     if comment.save
-      redirect_to public_article_path(article)
+      redirect_to article_path(article)
     end
   end
 
   def destroy
     PostComment.find(params[:id]).destroy
-    redirect_to public_article_path(params[:article_id])
+    redirect_to article_path(params[:article_id])
   end
 
   private

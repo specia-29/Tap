@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  namespace :public do
+  scope module: :public do
     resources :users do
       put 'withdrawal', to: 'users#withdrawal'
       patch 'stat_update', to: 'users#stat_update', as: 'destroy_user'

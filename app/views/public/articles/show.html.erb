@@ -2,7 +2,7 @@
   <div class="row">
       <div class="col-lg-9">
         <div class="profile-link mt-2 mb-2">
-          <%= link_to public_user_path(@user), class: "text-dark" do %>
+          <%= link_to user_path(@user), class: "text-dark" do %>
             <% if @article.user.profile_image.attached? %>
               <%= image_tag @article.user.profile_image, class: "rounded-circle", size: "50x50" %>
             <% else %>
@@ -12,7 +12,7 @@
           <% end %>
 
           <% if @article.user == current_user %>
-            <%= link_to "投稿を編集", edit_public_article_path(@article),class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 ml-5' %>
+            <%= link_to "投稿を編集", edit_article_path(@article),class: 'btn btn-success font-weight-bold border-dark pl-5 pr-5 ml-5' %>
           <% end %>
         </div>
 
@@ -24,9 +24,9 @@
 
         <div class="favorite mt-3 mb-3">
           <% if @article.favorited_by?(current_user) %>
-            <%= button_to "いいねを取り消す", public_article_favorites_path(@article), method: :delete, class: "btn-secondary" %>
+            <%= button_to "いいねを取り消す", article_favorites_path(@article), method: :delete, class: "btn-secondary" %>
           <% else %>
-            <%= button_to "いいね！", public_article_favorites_path(@article), method: :post, class: "btn-warning" %>
+            <%= button_to "いいね！", article_favorites_path(@article), method: :post, class: "btn-warning" %>
           <% end %>
         </div>
           <%= safe_join(@article.body.split("\n"),tag(:br)) %><br>
@@ -37,14 +37,14 @@
 <!--コメント-->
       <div class="border-top">
         <div class="comment-form mt-2">
-          <%= form_with model: [@article, @post_comment], url: public_article_post_comments_path(@article) do |f| %>
+          <%= form_with model: [@article, @post_comment], url: article_post_comments_path(@article) do |f| %>
             <%= f.text_field :comment,  size: 45, placeholder: "コメントはこちらへ" %>
             <%= f.submit "送信する", class: "btn btn-outline-dark btn-sm" %>
           <% end %>
         </div>
         <% @article.post_comments.each do |post_comment| %>
         <div class="d-flex align-items-center mt-2 mb-2">
-          <%= link_to public_user_path(post_comment.user), class: "text-dark pr-2" do %>
+          <%= link_to user_path(post_comment.user), class: "text-dark pr-2" do %>
             <% if post_comment.user.profile_image.attached? %>
               <%= image_tag post_comment.user.profile_image, class: "rounded-circle", size: "30x30" %>
             <% else %>
@@ -54,7 +54,7 @@
           <% end %>
             <%= post_comment.comment %>
           <% if post_comment.user == current_user %>
-            <%= button_to "削除", public_article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm ml-2" %>
+            <%= button_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm ml-2" %>
           <% end %>
         </div>
         <% end %>
@@ -81,7 +81,7 @@
       <p class="mt-3">いいねしたユーザー</p>
         <% @article.favorited_users.each do |user| %>
           <div class="d-flex mb-1">
-            <%= link_to public_user_path(user), class: "text-dark" do %>
+            <%= link_to user_path(user), class: "text-dark" do %>
               <% if user.profile_image.attached? %>
                 <%= image_tag user.profile_image, class: "rounded-circle mr-3", size: "50x50" %>
               <% else %>

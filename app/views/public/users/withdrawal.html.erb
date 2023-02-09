@@ -3,8 +3,8 @@
     <div class="col-lg-8 mt-5 d-flex">
       <p class="font-weight-bold">本当に退会しますか？</p>
       <div class="button d-flex">
-        <%= button_to "退会する", public_user_destroy_user_path(@user), method: :patch, class: 'mr-3 ml-5 btn btn-danger' %>
-        <%= link_to "退会しない", public_user_path(@user), class: 'btn btn-primary' %>
+        <%= button_to "退会する", user_destroy_user_path(@user), method: :patch, class: 'mr-3 ml-5 btn btn-danger' %>
+        <%= link_to "退会しない", user_path(@user), class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
