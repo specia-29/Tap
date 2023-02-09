@@ -6,6 +6,8 @@ class Public::PostCommentsController < ApplicationController
     comment.article_id = article.id
     if comment.save
       redirect_to article_path(article)
+    else
+      redirect_to article_path(article)
     end
   end
 
