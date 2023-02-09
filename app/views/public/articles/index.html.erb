@@ -13,6 +13,9 @@
         <%= link_to article_path(article) do %>
           <%= image_tag article.post_image, size: '1110x740', class: "mt-1 mb-2" %>
         <% end %>
+        <div class="text-muted text-right">
+          <%= article.created_at.strftime('%Y.%m.%d') %>
+        </div>
       </div>
     <% end %>
   </div>
