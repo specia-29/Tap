@@ -12,7 +12,7 @@
             <td>
               <%= link_to user_path(user) do %>
                 <% if user.profile_image.attached? %>
-                  <%= image_tag user.profile_image, class: "rounded-circle", size: "60x60" %>
+                  <%= image_tag user.profile_image, class: "search-profile-img rounded-circle" %>
                 <% else %>
                   <%= image_tag 'no_image', class: "rounded-circle", size: "60x60" %>
                 <% end %>
@@ -40,7 +40,7 @@
         <!--検索対象モデルがArticleの時 -->
           <% @articles.each do |article| %>
             <%= link_to article_path(article.id) do %>
-              <%= image_tag article.post_image, class: "m-3", size: "345x230" %>
+              <%= image_tag article.post_image, class: "search-img m-3" %>
             <% end %>
           <% end %>
       <% end %>

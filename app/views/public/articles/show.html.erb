@@ -4,7 +4,7 @@
         <div class="profile-link mt-2 mb-2">
           <%= link_to user_path(@user), class: "text-dark" do %>
             <% if @article.user.profile_image.attached? %>
-              <%= image_tag @article.user.profile_image, class: "rounded-circle", size: "50x50" %>
+              <%= image_tag @article.user.profile_image, class: "index-profile-img rounded-circle" %>
             <% else %>
               <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
             <% end %>
@@ -18,7 +18,7 @@
 
         <div class="post_image">
           <% if @article.post_image.attached? %>
-            <%= image_tag @article.post_image, size: '840x560' %>
+            <%= image_tag @article.post_image, class: "show-img" %>
           <% end %>
         </div>
 
@@ -46,7 +46,7 @@
         <div class="d-flex align-items-center mt-2 mb-2">
           <%= link_to user_path(post_comment.user), class: "text-dark pr-2" do %>
             <% if post_comment.user.profile_image.attached? %>
-              <%= image_tag post_comment.user.profile_image, class: "rounded-circle", size: "30x30" %>
+              <%= image_tag post_comment.user.profile_image, class: "comment-profile-img rounded-circle" %>
             <% else %>
               <%= image_tag 'no_image', class: "rounded-circle", size: "30x30" %>
             <% end %>
@@ -88,7 +88,7 @@
           <div class="d-flex mb-1">
             <%= link_to user_path(user), class: "text-dark" do %>
               <% if user.profile_image.attached? %>
-                <%= image_tag user.profile_image, class: "rounded-circle mr-3", size: "50x50" %>
+                <%= image_tag user.profile_image, class: "index-profile-img rounded-circle mr-3" %>
               <% else %>
                 <%= image_tag 'no_image', class: "rounded-circle mr-3", size: "50x50" %>
               <% end %>
