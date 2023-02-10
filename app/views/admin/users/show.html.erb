@@ -2,7 +2,7 @@
   <div class="row border-bottom">
     <div class="col-lg-3 p-4">
       <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image, class: "rounded-circle", size: "180x180" %>
+        <%= image_tag @user.profile_image, class: "mypage-profile-img rounded-circle" %>
       <% else %>
         <%= image_tag 'no_image', class: "rounded-circle", size: "180x180" %>
       <% end %>
@@ -30,7 +30,7 @@
   </div>
   <% @articles.each do |article| %>
     <%= link_to admin_article_path(article.id) do %>
-      <%= image_tag article.post_image, class: "m-3", size: "333x222" %>
+      <%= image_tag article.post_image, class: "mypage-img m-3" %>
     <% end %>
   <% end %>
 </div>
