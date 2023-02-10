@@ -50,11 +50,16 @@
             <% else %>
               <%= image_tag 'no_image', class: "rounded-circle", size: "30x30" %>
             <% end %>
-            <%= post_comment.user.user_name %>
+            <%= post_comment.user.user_name %> :
           <% end %>
+          <div class="comment d-flex">
             <%= post_comment.comment %>
+            <div class="comment-date ml-3 text-black-50">
+              <%= post_comment.created_at.strftime('%m月%d日') %>
+            </div>
+          </div>
           <% if post_comment.user == current_user %>
-            <%= button_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm ml-2" %>
+            <%= button_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-outline-danger btn-sm ml-2", data: {confirm: "削除しますか？"} %>
           <% end %>
         </div>
         <% end %>
