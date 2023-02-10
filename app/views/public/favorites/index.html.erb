@@ -4,7 +4,7 @@
     <div class="col-lg-12">
       <% @favorite_articles.each do |article| %>
         <%= link_to article_path(article.id) do %>
-          <%= image_tag article.post_image, class: "m-3", size: "333x222" %>
+          <%= image_tag article.post_image, class: "mypage-img m-3" %>
         <% end %>
       <% end %>
     </div>
