@@ -6,7 +6,7 @@
           <% if article.user.profile_image.attached? %>
             <%= image_tag article.user.profile_image, class: "index-profile-img rounded-circle" %>
           <% else %>
-            <%= image_tag 'no_image', class: "rounded-circle", size: "50x50" %>
+            <%= image_tag 'no_image.jpg', class: "rounded-circle", size: "50x50" %>
           <% end %>
           <%= article.user.user_name %>
         <% end %>
