@@ -3,6 +3,7 @@ class Public::ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
 
   def new
+    # Articleの空データの作成をする
     @article = Article.new
   end
 
