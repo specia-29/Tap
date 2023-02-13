@@ -50,3 +50,5 @@ class Public::ArticlesController < ApplicationController
   end
 
 end
+
+# test
