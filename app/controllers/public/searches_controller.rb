@@ -8,10 +8,10 @@ class Public::SearchesController < ApplicationController
     @range = params[:range]
 
     if @range == "ユーザー"
-      @users = User.looks(params[:search], params[:word])
+      @users = User.looks(params[:search], params[:word]).order(created_at: :desc)
       render "public/searches/search_result"
     else
-      @articles = Article.looks(params[:search], params[:word])
+      @articles = Article.looks(params[:search], params[:word]).order(created_at: :desc)
       render "public/searches/search_result"
     end
   end
