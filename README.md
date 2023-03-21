@@ -29,6 +29,11 @@
 - 自分の行動履歴を残しておきたい時
 
 ## 設計書
+- [WBS](https://docs.google.com/spreadsheets/d/1iVckRqplz2AWkiuvyRWyft8V_SlcYUrvQ2PRclzSHm0/edit?usp=sharing)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/1PV74LJgw9UsuEDCEKKTi7DF7nU5QxPgXIfBMxrr0ntY/edit?usp=sharing)
+- [ER図](https://docs.google.com/spreadsheets/d/1u_vVQWkw0Hb1oT3dmAxpLhK_PnFJ_maa3Eh-VdvvFpQ/edit?usp=sharing)
+- [詳細設計書](https://docs.google.com/spreadsheets/d/1yxOR4jUEvh6wwc4JqL1xrviNHvmDQrcsv_XErTeDBk0/edit?usp=sharing)
+- [テスト仕様書](https://docs.google.com/spreadsheets/d/1sD3j7pWWlDoNzkyT6tshOW0C7sYaO34GCJAep7kqqbI/edit?usp=sharing)
 
 ### 実装機能リスト
 https://docs.google.com/spreadsheets/d/1v4UZlCNpb3qAFmDK97ocLG24Ld8pxRiQfTNRdUbR0O4/edit?usp=sharing
