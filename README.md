@@ -29,11 +29,10 @@
 - 自分の行動履歴を残しておきたい時
 
 ## 設計書
-- [WBS](https://docs.google.com/spreadsheets/d/1iVckRqplz2AWkiuvyRWyft8V_SlcYUrvQ2PRclzSHm0/edit?usp=sharing)
-- [テーブル定義書](https://docs.google.com/spreadsheets/d/1PV74LJgw9UsuEDCEKKTi7DF7nU5QxPgXIfBMxrr0ntY/edit?usp=sharing)
-- [ER図](https://docs.google.com/spreadsheets/d/1u_vVQWkw0Hb1oT3dmAxpLhK_PnFJ_maa3Eh-VdvvFpQ/edit?usp=sharing)
-- [詳細設計書](https://docs.google.com/spreadsheets/d/1yxOR4jUEvh6wwc4JqL1xrviNHvmDQrcsv_XErTeDBk0/edit?usp=sharing)
-- [テスト仕様書](https://docs.google.com/spreadsheets/d/1sD3j7pWWlDoNzkyT6tshOW0C7sYaO34GCJAep7kqqbI/edit?usp=sharing)
+- [WBS](https://docs.google.com/spreadsheets/d/1s7MNXmJNL3mDUgTpiWhOs344tbVtj2b4pJLfx0fE9S4/edit?usp=share_link)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/185KooXWTUz61ZqcC1IEbedhaF0ujxv1kjOinT1i4bPo/edit?usp=share_link)
+- [詳細設計書](https://docs.google.com/spreadsheets/d/1yt0Xl0fZNCRfuxJybuduAov1cUITLbbkMqtf3V-yQcg/edit?usp=sharing)
+- [テスト仕様書](https://docs.google.com/spreadsheets/d/1RK_rGBGaPZQld3cqwdWZFbc4vZ27uneB/edit?usp=sharing&ouid=117485662569534956070&rtpof=true&sd=true)
 
 ### 実装機能リスト
 https://docs.google.com/spreadsheets/d/1v4UZlCNpb3qAFmDK97ocLG24Ld8pxRiQfTNRdUbR0O4/edit?usp=sharing
